@@ -1,0 +1,112 @@
+D:/School_Work/CSE141LProjects/CSE141L/DataRAM.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\DataRAM.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module DataRAM
+
+Top level modules:
+	DataRAM
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/ALU.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\ALU.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package ALU_sv_unit
+-- Importing package definitions
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/top_level_fromtb.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/top_level_fromtb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module top_level_fromtb
+
+Top level modules:
+	top_level_fromtb
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/stringsearch.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/stringsearch.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module stringsearch
+
+Top level modules:
+	stringsearch
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/regfile.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\regfile.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module reg_file
+
+Top level modules:
+	reg_file
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/ROM.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/ROM.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ROM
+
+Top level modules:
+	ROM
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/instrROM.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\instrROM.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module instr_ROM
+
+Top level modules:
+	instr_ROM
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/programcounter.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\programcounter.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module program_counter
+
+Top level modules:
+	program_counter
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/rf.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/rf.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module rf
+
+Top level modules:
+	rf
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/RAM.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/RAM.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module RAM
+
+Top level modules:
+	RAM
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/Control.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\Control.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package Control_sv_unit
+-- Importing package definitions
+-- Compiling module Control
+
+Top level modules:
+	Control
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/stringsearch_tb.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/stringsearch_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module stringsearch_tb
+
+Top level modules:
+	stringsearch_tb
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/ALUTestBench.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\ALUTestBench.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ALUTestBench
+
+Top level modules:
+	ALUTestBench
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/definitions.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\definitions.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package definitions
+
+Top level modules:
+	--none--
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/Control_tb.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\Control_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package Control_tb_sv_unit
+-- Importing package definitions
+-- Compiling module Control_tb
+
+Top level modules:
+	Control_tb
+
+} {} {}}

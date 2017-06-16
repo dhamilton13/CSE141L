@@ -138,7 +138,7 @@ module Control(
 							BRANCH     = 0;
 							MEM_WRITE  = 0;
 							MEM_READ   = 0;
-							REG_DST    = 4b'1000;
+							REG_DST    = 4'b1000;
 							MEM_TO_REG = 0;
 							HALT       = 1;
 						end
@@ -187,14 +187,14 @@ module Control(
 					11: //slra
 						begin
 							ALU_OP     = SLRA;
-							ALU_SRC_A  = 4b'1000;
+							ALU_SRC_A  = 4'b1000;
 							ALU_SRC_B  = OPCODE[3:0];
 							R_Type     = 0;
 							REG_WRITE  = 1;
 							BRANCH     = 0;
 							MEM_WRITE  = 0;
 							MEM_READ   = 0;
-							REG_DST    = 4b'1000;
+							REG_DST    = 4'b1000;
 							MEM_TO_REG = 0;
 							HALT       = 0;
 						end
@@ -222,23 +222,23 @@ module Control(
 							BRANCH     = 0;
 							MEM_WRITE  = 0;
 							MEM_READ   = 0;
-							REG_DST    = (OPCODE[1:0] + 3b'100); //add 4
+							REG_DST    = (OPCODE[1:0] + 3'b100); //add 4 to access reg4-7
 							MEM_TO_REG = 0;
 							HALT       = 0;
 						end
 					14: //lreg
 						begin
-              ALU_OP     = LREG;
-              ALU_SRC_A  = OPCODE[3:2];
-              ALU_SRC_B  = (OPCODE[1:0] + 3b'100);
-              R_Type     = 1;
-              REG_WRITE  = 1;
-              BRANCH     = 0;
-              MEM_WRITE  = 0;
-              MEM_READ   = 0;
-              REG_DST    = OPCODE[3:2];
-              MEM_TO_REG = 0;
-              HALT       = 0;
+							ALU_OP     = LREG;
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = (OPCODE[1:0] + 3'b100); //add 4 to access reg4-7
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 0;
+							HALT       = 0;
 						end
 					15: //mod
 						begin
@@ -260,7 +260,7 @@ module Control(
 				case(OPCODE[7:6])
 					0:
 						begin //addi
-							ALU_OP     = ADDI;
+							ALU_OP     = 5'b10000;//hardcoded because XX value in definitions
 							ALU_SRC_A  = OPCODE[5:4];
 							ALU_SRC_B  = OPCODE[3:0];
 							R_Type     = 0;
@@ -274,9 +274,9 @@ module Control(
 						end
 					1:
 						begin //bez
-							ALU_OP     = BEZ;
+							ALU_OP     = 5'b10100;//hardcoded because XX value in definitions
 							ALU_SRC_A  = OPCODE[1:0];
-							ALU_SRC_B  = 4b'1000;
+							ALU_SRC_B  = 4'b1000;
 							R_Type     = 0;
 							REG_WRITE  = 0;
 							BRANCH     = 1;
@@ -288,9 +288,9 @@ module Control(
 						end
 					2:
 						begin //bne
-							ALU_OP     = BNE;
+							ALU_OP     = 5'b11000;//hardcoded because XX value in definitions
 							ALU_SRC_A  = OPCODE[1:0];
-							ALU_SRC_B  = 4b'1000;
+							ALU_SRC_B  = 4'b1000;
 							R_Type     = 0;
 							REG_WRITE  = 0;
 							BRANCH     = 1;
@@ -302,7 +302,7 @@ module Control(
 						end
 					3:
 						begin //mv
-							ALU_OP     = MV;
+							ALU_OP     = 5'b11100;//hardcoded because XX value in definitions
 							ALU_SRC_A  = OPCODE[5:4];
 							ALU_SRC_B  = OPCODE[3:0];
 							R_Type     = 0;
