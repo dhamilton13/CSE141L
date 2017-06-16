@@ -140,7 +140,7 @@ module Control(
 							MEM_READ   = 0;
 							REG_DST    = 4'b1000;
 							MEM_TO_REG = 0;
-							HALT       = 1;
+							HALT       = 0;
 						end
 					8: //subu skip for now
 						begin
@@ -154,7 +154,7 @@ module Control(
 							MEM_READ   = 0;
 							REG_DST    = 0;
 							MEM_TO_REG = 0;
-							HALT       = 1;
+							HALT       = 0;
 						end
 					9: //addu skip for now
 						begin
@@ -168,7 +168,7 @@ module Control(
 							MEM_READ   = 0;
 							REG_DST    = 0;
 							MEM_TO_REG = 0;
-							HALT       = 1;
+							HALT       = 0;
 						end
 					10: //and
 						begin

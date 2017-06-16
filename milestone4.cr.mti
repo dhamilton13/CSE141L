@@ -77,14 +77,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	RAM
 
-} {} {}} D:/School_Work/CSE141LProjects/CSE141L/Control.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\Control.sv}
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/stringsearch_tb.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/stringsearch_tb.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling package Control_sv_unit
--- Importing package definitions
--- Compiling module Control
+-- Compiling module stringsearch_tb
 
 Top level modules:
-	Control
+	stringsearch_tb
 
 } {} {}} D:/School_Work/CSE141LProjects/CSE141L/ALUTestBench.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\ALUTestBench.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
