@@ -3,6 +3,7 @@ module stringsearch_tb;
 bit  [511:0] string1;		   // data_mem[32:95]
 bit  [  3:0] sequence1;		   // data_mem[9][3:0]
 wire [  7:0] count_beh;
+logic[  7:0] reg_four_count;   //DYLAN ADDED
 logic[  7:0] count_DUT;
 bit          clk, start;
 wire         done;
@@ -36,10 +37,11 @@ initial begin
   DUT.data_mem.core[9] = {4'b0,sequence1};  // load "Waldo"
 // load string to be searched -- watch Endianness
   for(int i=0; i<64; i++)
-    DUT.data_mem.core[i+32] = string1[8*i+:8];
+    DUT.data_mem.core[95-i] = string1[8*i+:8];
 // clear reg. file -- you may load any constants you wish here
   for(int i=0; i<16; i++)
 	DUT.reg_file.core[i] = 8'b0;
+  reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
 // load instruction ROM	-- unfilled elements will get x's -- should be harmless
   //$readmemb("instr.txt",DUT.instr_rom.core); //DYLAN COMMENTED THIS OUT WE JOINED TO program_counter
 //  $monitor ("string=%b,sequence=%b,count=%d\n",string1, sequence1, count);
@@ -47,6 +49,7 @@ initial begin
   #100ns wait(done);
   #10ns  count_DUT = DUT.data_mem.core[10];
   #10ns  $display(count_beh,,,count_DUT);
+  reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
   if(count_beh == count_DUT)	 // score another successful trial
     score++;
   #10ns;
@@ -58,10 +61,12 @@ initial begin
   DUT.data_mem.core[9] = {4'b0,sequence1};  // load "Waldo"
 // load string to be searched -- watch Endianness
   for(int i=0; i<64; i++)
-    DUT.data_mem.core[i+32] = string1[8*i+:8];
+    DUT.data_mem.core[95-i] = string1[8*i+:8];
 // clear reg. file -- you may load any constants you wish here
   for(int i=0; i<16; i++)
 	DUT.reg_file.core[i] = 8'b0;
+	
+  reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
 // load instruction ROM	-- unfilled elements will get x's -- should be harmless
   //$readmemb("instr.txt",DUT.instr_rom.core);//DYLAN COMMENTED THIS OUT WE JOINED TO program_counter
 //  $monitor ("string=%b,sequence=%b,count=%d\n",string1, sequence1, count);
@@ -69,6 +74,7 @@ initial begin
   #100ns wait(done);
   #10ns  count_DUT = DUT.data_mem.core[10];
   #10ns  $display(count_beh,,,count_DUT);
+  reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
   if(count_beh == count_DUT)	 // score another successful trial
     score++;
   #10ns;
@@ -81,7 +87,7 @@ initial begin
   DUT.data_mem.core[9] = {4'b0,sequence1};  // load "Waldo"
 // load string to be searched -- watch Endianness
   for(int i=0; i<64; i++)
-    DUT.data_mem.core[i+32] = string1[8*i+:8];
+    DUT.data_mem.core[95-i] = string1[8*i+:8];
 // clear reg. file -- you may load any constants you wish here
   for(int i=0; i<16; i++)
 	DUT.reg_file.core[i] = 8'b0;
@@ -92,6 +98,7 @@ initial begin
   #100ns wait(done);
   #10ns  count_DUT = DUT.data_mem.core[10];
   #10ns  $display(count_beh,,,count_DUT);
+  reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
   if(count_beh == count_DUT)	 // score another successful trial
     score++;
   #10ns	  	 $stop;

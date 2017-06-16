@@ -67,7 +67,7 @@ print labeldict
 inputFile = open("stringmatch.txt", "r")
 for line in inputFile:
     formatted = line.replace(",", "").replace("[", "").replace("]", "").replace("$","").lower().split()
-    if len(formatted) == 0 or commentChar in formatted[0] or jmpChar in formatted[0]:
+    if len(formatted) == 0 or jmpChar in formatted[0] or commentChar in formatted[0]:
         continue
     if 'bez' in formatted[0] or 'bne' in formatted[0]:
         outputFile.write(binaryMappings['breg'])
@@ -78,7 +78,8 @@ for line in inputFile:
         outputFile.write(branchLocationString[4:])
         outputFile.write('\n')
     for word in formatted:
-        if jmpChar in word or commentChar in word:
+        if commentChar in word:
+            outputFile.write('\n')
             break
         #if any(char in commentChar for char in word):
             #break
@@ -89,8 +90,9 @@ for line in inputFile:
             outputFile.write(binaryMappings[word])
         else:
             print("Word is not a key: " + word)
+            outputFile.write('\n')
             break
-    outputFile.write("    //{}".format(line))
+    #outputFile.write("    //{}".format(line))
 
 
 inputFile.close();

@@ -1,11 +1,4 @@
-D:/School_Work/CSE141LProjects/CSE141L/DataRAM.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\DataRAM.sv}
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module DataRAM
-
-Top level modules:
-	DataRAM
-
-} {} {}} D:/School_Work/CSE141LProjects/CSE141L/ALU.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\ALU.sv}
+D:/School_Work/CSE141LProjects/CSE141L/ALU.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\ALU.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling package ALU_sv_unit
 -- Importing package definitions
@@ -13,6 +6,20 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	ALU
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/DataRAM.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\DataRAM.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module DataRAM
+
+Top level modules:
+	DataRAM
+
+} {} {}} D:/School_Work/CSE141LProjects/CSE141L/TopLevel.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\TopLevel.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module TopLevel
+
+Top level modules:
+	TopLevel
 
 } {} {}} D:/School_Work/CSE141LProjects/CSE141L/top_level_fromtb.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/top_level_fromtb.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -78,13 +85,6 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	Control
-
-} {} {}} D:/School_Work/CSE141LProjects/CSE141L/stringsearch_tb.sv {1 {vlog -work milestone4 -sv -stats=none D:/School_Work/CSE141LProjects/CSE141L/stringsearch_tb.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module stringsearch_tb
-
-Top level modules:
-	stringsearch_tb
 
 } {} {}} D:/School_Work/CSE141LProjects/CSE141L/ALUTestBench.sv {1 {vlog -work milestone4 -sv -stats=none {D:\School_Work\CSE141LProjects\CSE141L\ALUTestBench.sv}
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016

@@ -5,7 +5,8 @@ module ALU(
   input [7:0] inOne,
   input [7:0] inTwo,
   output logic [7:0] result,
-  output logic branchCompPass
+  output logic branchCompPass,
+  output logic fourShift
     );
 
   always_comb begin
@@ -13,8 +14,8 @@ module ALU(
 	case(OP)
 		ADD : result = inOne+inTwo;
 		SUB : result = inOne-inTwo;
-		SLL : result = inOne << inTwo;
-		SRL : result = inOne >> inTwo;
+		SLL : result = (fourShift == 1)? (inOne << 4'b0100) : (inOne << inTwo);
+		SRL : result = (fourShift == 1)? (inOne >> 4'b0100) : (inOne >> inTwo);
 		BREG : result = inTwo;
 		SUBU: result = inOne - $unsigned (inTwo);
 		ADDU: result = inOne + $unsigned (inTwo);

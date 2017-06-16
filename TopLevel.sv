@@ -42,6 +42,7 @@ module TopLevel(
 	wire[7:0] regValueA;  		//value we got from regA
 	wire[7:0] regValueB;  		//value we got from regB
 	wire[7:0] regWriteValue; 	//what value to write to REG_DST
+	wire fourShift;				//used for auto 4 shift if both regs are same during sll or srl
 	
 	
 	//ALU values
@@ -95,22 +96,25 @@ module TopLevel(
 		.writeReg  (REG_DST)       , 
 		.writeValue(regWriteValue) , //either aluoutput or Memout from dataRam
 		.ReadA     (regValueA)     , 
-		.ReadB	   (regValueB)
+		.ReadB	   (regValueB)	   ,
+		.FourShift (fourShift)		//when we sll or srl using same register it auto shifts 4, this is the flag for ALU
 	);
 	
 	
 	assign ALUInputA = regValueA;  //ALUInputA is always registerValueA
 	//if R type it gets the value given from the register
 	//else it gives the immediate value sent from Control
-	assign ALUInputB = R_Type? regValueB : inB;  //ALUInputB is either registerValueB or the Immediate from control
+	assign ALUInputB = R_Type? regValueB : {{4{inB[3]}}, {inB[3:0]}};  //ALUInputB is either registerValueB or the Immediate from control
+																	   //the second part just maintains leading bit of inB incase of negative
 	
 	
 	 ALU ALU_Module (
-		.OP    (ALU_OP)     , 
-		.inOne (ALUInputA)  , 
-		.inTwo (ALUInputB)  , 
+		.OP       (ALU_OP)     , 
+		.inOne    (ALUInputA)  , 
+		.inTwo    (ALUInputB)  , 
 		.result   (ALUOutput)  , 
-		.branchCompPass (jumpCheck)
+		.branchCompPass (jumpCheck),
+		.fourShift(fourShift)
 	);
 	
 	//Above modules been updated for final test bench string search

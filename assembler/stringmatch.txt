@@ -1,8 +1,8 @@
 ﻿Assembly:
 #setup portion
-  Mv r0, -7
+  Mv r0, -7     #value 9 stored to r0
   Lw r0, [r0]		#mem location 9 stored to r0
-  Sll r0, r0    #logical shift right 4, r0 = XXXX0000
+  Sll r0, r0    #logical shift left 4, r0 = XXXX0000
 			          #r0 = comparison bits
   Mv r3, 2		  #startingmemory string location = 32
   Sll r3, r3	  #startingmemory string location = 32 = 0010 0000
@@ -10,7 +10,7 @@
   Addi r3, 1		#r3 = 33
   Lw r2, [r3]	  #r2 = the next part of our string //i don’t know if i #need the next part saved, i could just potentially load it from memory each time, keeping track of if it’s shifted or not would be interesting though and it would double the number of memory accesses needed.
   Addi r3, 1	  #r3 = 34
-  Sreg r3, r5		#r5 is saved as current mem location = 34
+  Sreg r3, r5		#r5 is saved as current mem location = 34 aka next mem location we will load from
 #start counter for outerloop  = 128
 	Mv r3, -8		  #r3 = counter for outer loop
 	Sll r3, r3	  #r3 = 128 = 1000 0000
@@ -18,40 +18,38 @@
         				#r3 free
         				#start looping for comparisons
 Loop:
-	Mv   r3, 0    #reset r3
-	Addi r3, 4		#initial counter for inner loop = 4
+	Mv   r3, 4    #initial counter for inner loop is 4
 	Sreg r3, r7 	#r7 = counter for inner loop starts as 4
 	Mv   r3, 0	  #reset r3
 4cmploop:
-	Add r3, r0		#should set r3 as our bit seq
-  And r3, r1	  #r3 = r1 AND r0 so if leftmost bits of r0 == r1 then #r3 will match our bit pattern
-  Sub r3, r0  	#if the and created the same pattern as r0 this #should result in 0
+  mv r3, -1     #sets r3 as 00001111
+  sll r3, r3    #shifts r3 by four = 11110000 when masked against XXXXXXXX returns XXXX0000 which can be checked for match
+  And r3, r1	  #r3 = MASK AND r0 so if leftmost bits of r0 == r1 then r3 will match our bit pattern
+  Sub r3, r0  	#if the and created the same pattern as r0 this should result in 0
 	Bez r3, Matched	#branch to Matched segment, r3 now free
 4cmpshift:
-	Mv  r3, 0       	#set r3 to 0
-	Addi r3, 1		#increment by 1 for shift
+	Mv  r3, 1     #set r3 to 1 for shift
 	Sll r1, r3		#shift current string by 1, r3 now free
-	Lreg r3, r7		#load our inner loop counter
+	Lreg r3, r7		#load our 4cmploop inner loop counter
 	Addi r3, -1		#subtract our counter
 	bez r3, Loopshift	#if counter = 0 then done with 4cmploop
-	Sreg r3, r7		#put 4cmpcounter back in r7
-	mv  r3, 0		#make r3 = 0 again
+	Sreg r3, r7		#put 4cmploop inner loop counter back in r7
+	mv  r3, 0		  #make r3 = 0 again
 	Bez r3, 4cmploop	#run our 4cmp loop again
-
 Matched:
 	Lreg r3, r4		#load current count into r3
 	Addi r3, 1		#increment count
+  bez r3, END   #saturation check, if r3 was full add 1 signed would set it to 0
 	Sreg r3, r4		#save count back to r4
-	mv   r3, 0		#since no jmp we sez then bez
+	mv   r3, 0		#since no jmp we mv 0 to r3 then bez
 	Bez r3, 4cmpshift
-
 LoopShift:
-	Mv r3, -1		#makes r3 = 00001111
+	Mv r3, -1		  #makes r3 = 00001111
 	Sll r3, r3		#r3 = 11110000
 	And r3, r2		#r3 = the next bits to be pushed in
 	Srl r3, r3		#r3 shifted right 4 to put into current string
 	Sll r2, r2		#prep the future next bits
-	Add r1, r3		#puts the next bits into our current string r3 free
+	Add r1, r3		#puts the next bits into our current string, r3 freed
 	Lreg r3, r6		#outerloop counter stored in 3
 	Mod r3, r2		#every other loop we change the next string
   Bne r3, Meminc
@@ -63,7 +61,7 @@ IncLoop:
   bne r3, Loop	#otherwise we reloop
 
 Meminc:
-	Lreg r3, r5		#loads r5 aka next string into r3
+	Lreg r3, r5		#loads r5 aka next mem location into r3
   Lw r2, [r3]		#loads next string element
   Addi r3, 1		#increment our string location counter
   Sreg r3, r5		#stores new mem loc back to r5
