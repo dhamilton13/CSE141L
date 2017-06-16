@@ -1,6 +1,7 @@
 ﻿Assembly:
 #setup portion
-  Lw r0, [r0]		#mem location 9 stored to r0
+  mv  r0, -7
+  Lw  r0, [r0]		#mem location 9 stored to r0
   Sll r0, r0    #logical shift left 4, r0 = XXXX0000
 			          #r0 = comparison bits
   Mv r3, 2		  #startingmemory string location = 32

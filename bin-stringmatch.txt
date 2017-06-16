@@ -1,4 +1,5 @@
-001000000    //  Lw r0, [r0]		#mem location 9 stored to r0
+111001001    //  mv  r0, -7
+001000000    //  Lw  r0, [r0]		#mem location 9 stored to r0
 000100000    //  Sll r0, r0    #logical shift left 4, r0 = XXXX0000
 111110010    //  Mv r3, 2		  #startingmemory string location = 32
 000101111    //  Sll r3, r3	  #startingmemory string location = 32 = 0010 0000
@@ -18,29 +19,29 @@
 010101101    //  And r3, r1	  #r3 = MASK AND r0 so if leftmost bits of r0 == r1 then r3 will match our bit pattern
 000011100    //  Sub r3, r0  	#if the and created the same pattern as r0 this should result in 0
 001110010
-010110010
+010110011
 101000011    //	Bez r3, Matched	#branch to Matched segment, r3 now free
 111110001    //	Mv  r3, 1     #set r3 to 1 for shift
 000100111    //	Sll r1, r3		#shift current string by 1, r3 now free
 011101111    //	Lreg r3, r7		#load our 4cmploop inner loop counter
 100111111    //	Addi r3, -1		#subtract our counter
 001110010
-010111100
+010111101
 101000011    //	bez r3, Loopshift	#if counter = 0 then done with 4cmploop
 011011111    //	Sreg r3, r7		#put 4cmploop inner loop counter back in r7
 111110000    //	mv  r3, 0		  #make r3 = 0 again
-001110000
-010111111
+001110001
+010110000
 101000011    //	Bez r3, 4cmploop	#run our 4cmp loop again
 011101100    //	Lreg r3, r4		#load current count into r3
 100110001    //	Addi r3, 1		#increment count
 001110100
-010111000
+010111001
 101000011    //  bez r3, END   #saturation check, if r3 was full add 1 signed would set it to 0
 011011100    //	Sreg r3, r4		#save count back to r4
 111110000    //	mv   r3, 0		#since no jmp we mv 0 to r3 then bez
 001110001
-010110110
+010110111
 101000011    //	Bez r3, 4cmpshift
 111111111    //	Mv r3, -1		  #makes r3 = 00001111
 000101111    //	Sll r3, r3		#r3 = 11110000
@@ -51,16 +52,16 @@
 011101110    //	Lreg r3, r6		#outerloop counter stored in 3
 011111110    //	Mod r3, r2		#every other loop we change the next string
 001110100
-010110000
+010110001
 110000011    //  Bne r3, Meminc
 011101110    //	Lreg r3, r6		#bring outerloop counter to r3
 100111111    //	Addi r3, -1		#decrement our loop counter
 011011110    //  Sreg r3, r6
 001110100
-010111000
+010111001
 101000011    //	Bez r3, END		#if at the end of our loop then we end
 001110000
-010111100
+010111101
 110000011    //  bne r3, Loop	#otherwise we reloop
 011101101    //	Lreg r3, r5		#loads r5 aka next mem location into r3
 001001011    //  Lw r2, [r3]		#loads next string element
@@ -68,9 +69,9 @@
 011011101    //  Sreg r3, r5		#stores new mem loc back to r5
 111110000    //  mv   r3, 0		#set r3 = 0 for branch
 001110011
-010110111
+010111000
 101000011    //  Bez r3, IncLoop	#branch to loop incrementer
-011100000    //	Lreg r4, r0		#loads the number of matches to r0
+011100000    //	Lreg r0, r4		#loads the number of matches to r0
 111010000    //	mv   r1, 0		#place 10 decimal into r1
 100010101    //	Addi r1, 5	#place 10 decimal into r1
 111100000    //	mv   r2, 0		#place 10 decimal into r1

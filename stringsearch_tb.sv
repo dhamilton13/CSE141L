@@ -33,6 +33,7 @@ initial begin
 // now declare the searchable string and the 4-bit pattern itself
    string1   = {{102{5'b01001}},2'b0};//{128{4'b1001}};
    sequence1 = 4'b1001;
+   #10ns;
 // load 4-bit pattern into memory address 9, LSBs
   DUT.data_mem.core[9] = {4'b0,sequence1};  // load "Waldo"
 // load string to be searched -- watch Endianness
@@ -41,7 +42,7 @@ initial begin
 // clear reg. file -- you may load any constants you wish here
   for(int i=0; i<16; i++)
 	DUT.reg_file.core[i] = 8'b0;
-  DUT.reg_file.core[0] = 8'b00001001;
+  //DUT.reg_file.core[0] = 8'b00001001;
   reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
 // load instruction ROM	-- unfilled elements will get x's -- should be harmless
   //$readmemb("instr.txt",DUT.instr_rom.core); //DYLAN COMMENTED THIS OUT WE JOINED TO program_counter
@@ -56,8 +57,8 @@ initial begin
   #10ns;
 // shall we have another go?
   #10ns start = 1'b1;
-   string1   = {{102{5'b01101}},2'b0};//{128{4'b1001}};
-   sequence1 = 4'b1101;
+   string1   = {{102{5'b01011}},2'b0};//{128{4'b1001}};
+   sequence1 = 4'b1011;
 // load 4-bit pattern into memory address 9, LSBs
   DUT.data_mem.core[9] = {4'b0,sequence1};  // load "Waldo"
 // load string to be searched -- watch Endianness
