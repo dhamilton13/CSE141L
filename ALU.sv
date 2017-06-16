@@ -15,7 +15,7 @@ const logic [4:0]BNE = 5'b101XX;
 const logic [4:0]BEZ = 5'b110XX;
 const logic [4:0]MV = 5'b111XX;
 
-	 
+
 module ALU(
   input [4:0] OP,
   input [7:0] inOne,
@@ -23,28 +23,28 @@ module ALU(
   output logic [7:0] result,
   output logic branchCompPass
     );
-	 
-	
+
+
   always_comb begin
-	
+
 	case(OP)
 		ADD : res = inOne+inTwo;
 		SUB : res = inOne-inTwo;
 		SLL : res = inOne << inTwo;
 		SRL : res = inOne >> inTwo;
-		SLT : res = (inOne < inTwo) ? 8'b00000001 : 8'b0;
+		BREG : res = inTwo;
 		SUBU: res = inOne - $unsigned (inTwo);
 		ADDU: res = inOne + $unsigned (inTwo);
 		AND : res = inOne & inTwo;
-		SEZ : res = 8'b0;
+		SLRA : res = (inOne << 4) + $unsigned (inTwo);
 		SEQ : res = (inOne == inTwo) ? 8'b00000001 : 8'b0;
 		MOD : res = inOne % inTwo;
 		ADDI: res = inOne+inTwo;
-		BNE : begin 
+		BNE : begin
 			  res = (inOne != 0) ? inTwo : 8'b0;
-			  branchCompPass = (inOne == 0) ? 1'b1 : 1'b0;
+			  branchCompPass = (inOne != 0) ? 1'b1 : 1'b0;
 			  end
-		BEZ : begin 
+		BEZ : begin
 			  res = (inOne == 0) ? inTwo : 8'b0;
 			  branchCompPass = (inOne == 0) ? 1'b1 : 1'b0;
 			  end

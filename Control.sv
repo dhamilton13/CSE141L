@@ -1,14 +1,14 @@
-// Create Date:    18:08:46 02/16/2012 
-// Design Name: 
-// Module Name:    Control 
-// Project Name: 
-// Description: 
+// Create Date:    18:08:46 02/16/2012
+// Design Name:
+// Module Name:    Control
+// Project Name:
+// Description:
 //
-// Dependencies: 
+// Dependencies:
 //
 // Revision: 	  2017.02.25
 // Revision 0.01 - File Created
-// Additional Comments: 
+// Additional Comments:
 //
 import definitions::*;
 module Control(
@@ -31,8 +31,8 @@ module Control(
 			0 : begin //R type
 				case(OPCODE[7:4])
 					0: //add
-						begin 
-							ALU_OP     = ADD; 
+						begin
+							ALU_OP     = ADD;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -45,8 +45,8 @@ module Control(
 							HALT       = 0;
 						end
 					1: //sub
-						begin 
-							ALU_OP     = SUB; 
+						begin
+							ALU_OP     = SUB;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -59,8 +59,8 @@ module Control(
 							HALT       = 0;
 						end
 					2: //sll
-						begin 
-							ALU_OP     = SLL; 
+						begin
+							ALU_OP     = SLL;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -73,8 +73,8 @@ module Control(
 							HALT       = 0;
 						end
 					3: //srl
-						begin 
-							ALU_OP     = SRL; 
+						begin
+							ALU_OP     = SRL;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -87,8 +87,8 @@ module Control(
 							HALT       = 0;
 						end
 					4: //lw
-						begin 
-							ALU_OP     = LW; 
+						begin
+							ALU_OP     = LW;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -101,8 +101,8 @@ module Control(
 							HALT       = 0;
 						end
 					5: //sw
-						begin 
-							ALU_OP     = SW; 
+						begin
+							ALU_OP     = SW;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -115,8 +115,8 @@ module Control(
 							HALT       = 0;
 						end
 					6: //ht
-						begin 
-							ALU_OP     = 0; 
+						begin
+							ALU_OP     = 0;
 							ALU_SRC_A  = 0;
 							ALU_SRC_B  = 0;
 							R_Type     = 0;
@@ -128,23 +128,23 @@ module Control(
 							MEM_TO_REG = 0;
 							HALT       = 1;
 						end
-					7: //slt skip for now
-						begin 
-							ALU_OP     = 0; 
+					7: //breg
+						begin
+							ALU_OP     = BREG;
 							ALU_SRC_A  = 0;
-							ALU_SRC_B  = 0;
+							ALU_SRC_B  = OPCODE[3:0];
 							R_Type     = 0;
-							REG_WRITE  = 0;
+							REG_WRITE  = 1;
 							BRANCH     = 0;
 							MEM_WRITE  = 0;
 							MEM_READ   = 0;
-							REG_DST    = 0;
+							REG_DST    = 4b'1000;
 							MEM_TO_REG = 0;
 							HALT       = 1;
 						end
 					8: //subu skip for now
-						begin 
-							ALU_OP     = 0; 
+						begin
+							ALU_OP     = 0;
 							ALU_SRC_A  = 0;
 							ALU_SRC_B  = 0;
 							R_Type     = 0;
@@ -157,8 +157,8 @@ module Control(
 							HALT       = 1;
 						end
 					9: //addu skip for now
-						begin 
-							ALU_OP     = 0; 
+						begin
+							ALU_OP     = 0;
 							ALU_SRC_A  = 0;
 							ALU_SRC_B  = 0;
 							R_Type     = 0;
@@ -171,8 +171,8 @@ module Control(
 							HALT       = 1;
 						end
 					10: //and
-						begin 
-							ALU_OP     = AND; 
+						begin
+							ALU_OP     = AND;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -184,23 +184,23 @@ module Control(
 							MEM_TO_REG = 0;
 							HALT       = 0;
 						end
-					11: //sez
-						begin 
-							ALU_OP     = SEZ; 
-							ALU_SRC_A  = OPCODE[3:2];
-							ALU_SRC_B  = OPCODE[1:0];
-							R_Type     = 1;
+					11: //slra
+						begin
+							ALU_OP     = SLRA;
+							ALU_SRC_A  = 4b'1000;
+							ALU_SRC_B  = OPCODE[3:0];
+							R_Type     = 0;
 							REG_WRITE  = 1;
 							BRANCH     = 0;
 							MEM_WRITE  = 0;
 							MEM_READ   = 0;
-							REG_DST    = OPCODE[1:0];
+							REG_DST    = 4b'1000;
 							MEM_TO_REG = 0;
 							HALT       = 0;
 						end
 					12: //seq skip for now
-						begin 
-							ALU_OP     = 0; 
+						begin
+							ALU_OP     = 0;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -213,8 +213,8 @@ module Control(
 							HALT       = 0;
 						end
 					13: //sreg
-						begin 
-							ALU_OP     = 0; 
+						begin
+							ALU_OP     = SREG;
 							ALU_SRC_A  = OPCODE[3:2];
 							ALU_SRC_B  = OPCODE[1:0];
 							R_Type     = 1;
@@ -227,24 +227,24 @@ module Control(
 							HALT       = 0;
 						end
 					14: //lreg
-						begin 
-							ALU_OP     = 0; 
-							ALU_SRC_A  = OPCODE[3:2];
-							ALU_SRC_B  = OPCODE[1:0];
-							R_Type     = 1;
-							REG_WRITE  = 1;
-							BRANCH     = 0;
-							MEM_WRITE  = 0;
-							MEM_READ   = 0;
-							REG_DST    = (OPCODE[1:0] + 3b'100);//add 4
-							MEM_TO_REG = 0;
-							HALT       = 0;
+						begin
+              ALU_OP     = LREG;
+              ALU_SRC_A  = OPCODE[3:2];
+              ALU_SRC_B  = (OPCODE[1:0] + 3b'100);
+              R_Type     = 1;
+              REG_WRITE  = 1;
+              BRANCH     = 0;
+              MEM_WRITE  = 0;
+              MEM_READ   = 0;
+              REG_DST    = OPCODE[3:2];
+              MEM_TO_REG = 0;
+              HALT       = 0;
 						end
-					15: //lreg
-						begin 
-							ALU_OP     = 0; 
+					15: //mod
+						begin
+							ALU_OP     = MOD;
 							ALU_SRC_A  = OPCODE[3:2];
-							ALU_SRC_B  = (OPCODE[1:0] + 3b'100);
+							ALU_SRC_B  = (OPCODE[1:0]);
 							R_Type     = 1;
 							REG_WRITE  = 1;
 							BRANCH     = 0;
@@ -260,7 +260,7 @@ module Control(
 				case(OPCODE[7:6])
 					0:
 						begin //addi
-							ALU_OP     = ADDI; 
+							ALU_OP     = ADDI;
 							ALU_SRC_A  = OPCODE[5:4];
 							ALU_SRC_B  = OPCODE[3:0];
 							R_Type     = 0;
@@ -274,7 +274,7 @@ module Control(
 						end
 					1:
 						begin //bez
-							ALU_OP     = BEZ; 
+							ALU_OP     = BEZ;
 							ALU_SRC_A  = OPCODE[1:0];
 							ALU_SRC_B  = 4b'1000;
 							R_Type     = 0;
@@ -288,7 +288,7 @@ module Control(
 						end
 					2:
 						begin //bne
-							ALU_OP     = BNE; 
+							ALU_OP     = BNE;
 							ALU_SRC_A  = OPCODE[1:0];
 							ALU_SRC_B  = 4b'1000;
 							R_Type     = 0;
@@ -302,7 +302,7 @@ module Control(
 						end
 					3:
 						begin //mv
-							ALU_OP     = MV; 
+							ALU_OP     = MV;
 							ALU_SRC_A  = OPCODE[5:4];
 							ALU_SRC_B  = OPCODE[3:0];
 							R_Type     = 0;
