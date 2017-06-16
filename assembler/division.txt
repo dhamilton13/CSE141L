@@ -1,0 +1,80 @@
+mv    $r0, -8
+sll   $r0, $r0
+lw    $r0, [r0]
+sreg  $r0, $r4
+
+mv    $r1, -8
+sll   $r1, $r1
+addi  $r1, 1
+lw    $r1, [r1]
+sreg  $r1, $r5
+
+mv    $r2, -8
+sll   $r2, $r2
+addi  $r2, 2
+lw    $r2, [r2]
+sreg  $r2, $r6
+
+mv    $r3, 7
+sll   $r3, $r3
+addi  $r2, -2
+lw    $r3, [r3]
+sreg  $r3, $r7
+
+LOOP:
+lreg  $r2, $r6          #loads the divisor
+slt   $r2, $r1          #sets r2 to 0/1 one if its less than r1 or not
+bne   $r2, SHIFT        #jumps to shift on condition
+
+lreg  $r2, $r6  #loads the divisor
+subu  $r1, $r2         #subtracts the divisor from the LSW
+
+sez   $r2               #set to zero
+addi  $r2, -1           #next three loads 11111111 into the register
+srl   $r2, $r2          #shifts 4 bits
+addi  $r2, -1
+seq   $r2, $r3          #checks if LSW quotient accumulator is full
+addi  $r3, 1            #resets it to 0 if it is or incr if not
+bez   $r3, INCRMSW      #jumps to increment the MSW
+bez   $r0, LOOP        #reloops by comparing to 0(r15) automatically
+
+INCRMSW:
+lreg  $r3, $r7  #loads the current MSW
+addi  $r3, 1            #incr by 1
+sreg  $r3, $r7  #resaves the MSW
+sez   $r3               #resets our LSW quotient accumulator
+
+bez   $r3, LOOP        #resets loop
+
+
+SHIFT:
+bez   $r0, DONE         #if MSW of dividend is already 0 then DONE
+sez   $r2
+addi  $r2, 1
+and   $r2, $r0          #checks if MSW's LSb is 1
+bez   $r2, SHIFT
+srl   $r0, $r1          #shifts right by 1
+bez   $r2, SHIFT        #if not continues shifting
+sez   $r2
+addi  $r2, -1
+srl   $r2, $r2
+addi  $r2, -1
+addu  $r1, $r2          #adds 11111111 to the dividend LSW
+lreg  $r2, $r2
+subu  $r1, $r2          #subs our dividend
+addi  $r1, 1            #adds the last 1 to our LSW
+addi  $r2, -1
+srl   $r2, $r2
+addi  $r2, -1
+seq   $r2, $r3          #checks for full quotient LSW
+addi  $r3, 1
+bez   $r2, INCRMSW
+bez   $r0, LOOP         #loops on r15 automatically
+
+
+DONE:
+mv    $r3, 7
+sll   $r3, $r3
+addi   $r3, -1
+sw    $r3, [$r3]   #stores the LSW quotient to memory,
+ht                      #our MSW is already stored

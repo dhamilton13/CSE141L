@@ -1,0 +1,132 @@
+111001000    //mv    $r0, -8             #the values for Angle will be stored in r6 and r7 throughout program execution
+010110001    //sez   $r1
+011010010    //sreg  $r0, r6             #r6 = MSW Angle = 0000 1000
+011010111    //sreg  $r1, r7             #r7 = LSW Angle = 0000 0000
+010110000    //sez   $r0
+011101010    //lreg  $r2, $r6
+001110010    //slt   $r0, $r2            #check if ANG MSW has shifted down to 0
+010110001    //sez   $r1
+011101111    //lreg  $r3, $r7
+001110111    //slt   $r1, $r3            #check if ANG LSW has shifted down to 0
+000000001    //add   $r0, $r1            #add two together, if both 0 then DONE
+101000000    //bez   $r0, END
+111100011    //mv    $r2, 3
+111110100    //mv    $r3, 4
+001000010    //lw    $r0, $r2            #load most significant word of y mem3
+001000111    //lw    $r1, $r3            #load least significant word of y mem4
+010110010    //sez   $r2
+001111000    //slt   $r2, $r0            #if 0 < MSW of y set to 1
+101000010    //bez   $r2, ELSE           # branch to else if 0 >= y
+111100001    //mv    $r2, 1
+001001010    //lw    $r2, $r2            #load mem loc 1 into r2
+000110011    //srl   $r0, $r3            #shift Y MSW i times to the right
+000001000    //add   $r2, $r0            #adds shifted Y MSW to X MSW
+011010101    //sreg  $r1, $r5            #temporarily store r1 to r5, r1 being Y LSW
+111010001    //mv    $r1, 1
+001011001    //sw    $r2, $r1            #stores new value for X MSW into mem loc 1
+011100101    //lreg  $r1, $r5            #get old val of r1 back aka Y LSW
+000110111    //srl   $r1, $r3            #shifts Y LSW i times to the right
+111100010    //mv    $r2, 2
+001001010    //lw    $r2, $r2            #load mem loc 2 into r2 aka X LSW
+000001001    //add   $r2, $r1            #adds shifted Y LSW to X LSW
+111010010    //mv    $r1, 2
+001011001    //sw    $r2, $r1            #stores new value for X LSW into mem loc 2
+111010100    //mv    $r1, 4
+001000101    //lw    $r1, $r1            #loads mem loc 4 into r1 aka Y LSW
+000111011    //srl   $r2, $r3            #shifts X LSW i times to the right
+000010110    //sub   $r1, $r2            #subs X LSW from Y LSW
+111100100    //mv    $r2, 4
+001010110    //sw    $r1, $r2            #saves new value of y LSW into mem loc 4
+111010011    //mv    $r1, 3
+001000101    //lw    $r1, $r1            #loads y MSW from mem loc 3
+111000001    //mv    $r0, 1
+001001000    //lw    $r2, $r0            #loads x MSW from mem loc 1
+000111011    //srl   $r2, $r3            #shifts x MSW i times to the right
+000010110    //sub   $r1, $r2            #subs x MSW from y MSW
+111000011    //mv    $r0, 3
+001010100    //sw    $r1, $r0            #saves new value of y MSW to mem loc 3
+111000111    //mv    $r0, 7
+001000000    //lw    $r0, $r0            #loads SumAngle MSW from mem loc 7
+111010111    //mv    $r1, 7
+100010001    //addi  $r1, 1
+001000101    //lw    $r1, $r1            #loads SumAngle LSW from mem loc 8
+011101010    //lreg  $r2, $r6
+000000010    //add   $r0, $r2            #adds Ang into SumAngle for MSW
+011101011    //lreg  $r2, $r7
+000000110    //add   $r1, $r2            #adds Ang into SumAngle for LSW
+111100111    //mv    $r2, 7
+001010010    //sw    $r0, $r2            #stores new SumAngle into mem loc 7
+111100111    //mv    $r2, 7
+100100001    //addi  $r2, 1
+001010110    //sw    $r1, $r2            #stores new sumAngle into mem loc 8
+011101010    //lreg  $r2, $r6            #gets Ang MSW from r6
+000111001    //srl   $r2, $r1              #shifts Ang MSW to the right once
+011011010    //sreg  $r2, $r6            #stores shifted Ang MSW back to r6
+011101011    //lreg  $r2, $r7            #gets Ang LSW from r7
+000111001    //srl   $r2, $r1              #shifts Ang LSW to the right once
+011011011    //sreg  $r2, $r7            #stores Ang LSW back into r7
+100110001    //Addi  $r3, 1              #incr our counter
+011011100    //sreg  $r3, $r4            #stores new counter to r4
+010110000    //sez   $r0
+101000000    //bez   $r0, LOOP           #branch always to LOOP
+111100001    //mv    $r2, 1
+001001010    //lw    $r2, $r2            #load mem loc 1 into r2
+000110011    //srl   $r0, $r3            #shift Y MSW i times to the right
+000011000    //sub   $r2, $r0            #subs shifted Y MSW to X MSW
+011010101    //sreg  $r1, $r5            #temporarily store r1 to r5, r1 being Y LSW
+111010001    //mv    $r1, 1
+001011001    //sw    $r2, $r1            #stores new value for X MSW into mem loc 1
+011100101    //lreg  $r1, $r5            #get old val of r1 back aka Y LSW
+000110111    //srl   $r1, $r3            #shifts Y LSW i times to the right
+111100010    //mv    $r2, 2
+001001010    //lw    $r2, $r2            #load mem loc 2 into r2 aka X LSW
+000011001    //sub   $r2, $r1            #subs shifted Y LSW to X LSW
+111010010    //mv    $r1, 2
+001011001    //sw    $r2, $r1            #stores new value for X LSW into mem loc 2
+111010100    //mv    $r1, 4
+001000101    //lw    $r1, $r1            #loads mem loc 4 into r1 aka Y LSW
+000111011    //srl   $r2, $r3            #shifts X LSW i times to the right
+000000110    //add   $r1, $r2            #add X LSW from Y LSW
+111100100    //mv    $r2, 4
+001010110    //sw    $r1, $r2            #saves new value of y LSW into mem loc 4
+111010011    //mv    $r1, 3
+001000101    //lw    $r1, $r1            #loads y MSW from mem loc 3
+111000001    //mv    $r0, 1
+001001000    //lw    $r2, $r0            #loads x MSW from mem loc 1
+000111011    //srl   $r2, $r3            #shifts x MSW i times to the right
+000000110    //add   $r1, $r2            #add x MSW from y MSW
+111000011    //mv    $r0, 3
+001010100    //sw    $r1, $r0            #saves new value of y MSW to mem loc 3
+111000111    //mv    $r0, 7
+001000000    //lw    $r0, $r0            #loads SumAngle MSW from mem loc 7
+111010111    //mv    $r1, 7
+100010001    //addi  $r1, 1
+001000101    //lw    $r1, $r1            #loads SumAngle LSW from mem loc 8
+011101010    //lreg  $r2, $r6
+000010010    //sub   $r0, $r2            #sub Ang into SumAngle for MSW
+011101011    //lreg  $r2, $r7
+000010110    //sub   $r1, $r2            #sub Ang into SumAngle for LSW
+111100111    //mv    $r2, 7
+001010010    //sw    $r0, $r2            #stores new SumAngle into mem loc 7
+111100111    //mv    $r2, 7
+100100001    //addi  $r2, 1
+001010110    //sw    $r1, $r2            #stores new sumAngle into mem loc 8
+011101010    //lreg  $r2, $r6            #gets Ang MSW from r6
+000111001    //srl   $r2, $r1              #shifts Ang MSW to the right once
+011011010    //sreg  $r2, $r6            #stores shifted Ang MSW back to r6
+011101011    //lreg  $r2, $r7            #gets Ang LSW from r7
+000111001    //srl   $r2, $r1              #shifts Ang LSW to the right once
+011011011    //sreg  $r2, $r7            #stores Ang LSW back into r7
+100110001    //Addi  $r3, 1              #incr our counter
+011011100    //sreg  $r3, $r4            #stores new counter to r4
+010110000    //sez   $r0
+101000000    //bez   $r0, LOOP           #branch always to LOOP
+111100001    //mv   $r2, 1
+111110010    //mv   $r3, 2
+001000010    //lw   $r0, $r2		      #get msw X from mem loc 1
+001000111    //lw   $r1, $r3		      #get lsw X from mem loc 2
+111100101    //mv   $r2, 5
+111110110    //mv   $r3, 6
+001010010    //sw   $r0, $r2		      #save msw X into mem loc 5
+001010111    //sw   $r1, $r3		      #save lsw X into mem loc 6
+001100000    //Ht					      #end program execution

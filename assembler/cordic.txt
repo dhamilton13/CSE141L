@@ -1,0 +1,187 @@
+ASSEMBLY:
+#r4= loop counter, r5 is our miscellaneous
+mv    $r0, -8             #the values for Angle will be stored in r6 and r7 throughout program execution
+sez   $r1
+sreg  $r0, r6             #r6 = MSW Angle = 0000 1000
+sreg  $r1, r7             #r7 = LSW Angle = 0000 0000
+
+LOOP:
+sez   $r0
+lreg  $r2, $r6
+slt   $r0, $r2            #check if ANG MSW has shifted down to 0
+sez   $r1
+lreg  $r3, $r7
+slt   $r1, $r3            #check if ANG LSW has shifted down to 0
+add   $r0, $r1            #add two together, if both 0 then DONE
+bez   $r0, END
+
+mv    $r2, 3
+mv    $r3, 4
+lw    $r0, $r2            #load most significant word of y mem3
+lw    $r1, $r3            #load least significant word of y mem4
+
+sez   $r2
+slt   $r2, $r0            #if 0 < MSW of y set to 1
+bez   $r2, ELSE           # branch to else if 0 >= y
+
+mv    $r2, 1
+lw    $r2, $r2            #load mem loc 1 into r2
+#lreg  $r3, $r4           #loads i which is loop counter into accessible register
+
+srl   $r0, $r3            #shift Y MSW i times to the right
+add   $r2, $r0            #adds shifted Y MSW to X MSW
+sreg  $r1, $r5            #temporarily store r1 to r5, r1 being Y LSW
+mv    $r1, 1
+sw    $r2, $r1            #stores new value for X MSW into mem loc 1
+
+lreg  $r1, $r5            #get old val of r1 back aka Y LSW
+srl   $r1, $r3            #shifts Y LSW i times to the right
+mv    $r2, 2
+lw    $r2, $r2            #load mem loc 2 into r2 aka X LSW
+add   $r2, $r1            #adds shifted Y LSW to X LSW
+mv    $r1, 2
+sw    $r2, $r1            #stores new value for X LSW into mem loc 2
+
+#X is now fully updated
+#Y's turn
+
+mv    $r1, 4
+lw    $r1, $r1            #loads mem loc 4 into r1 aka Y LSW
+srl   $r2, $r3            #shifts X LSW i times to the right
+sub   $r1, $r2            #subs X LSW from Y LSW
+mv    $r2, 4
+sw    $r1, $r2            #saves new value of y LSW into mem loc 4
+
+mv    $r1, 3
+lw    $r1, $r1            #loads y MSW from mem loc 3
+mv    $r0, 1
+lw    $r2, $r0            #loads x MSW from mem loc 1
+
+srl   $r2, $r3            #shifts x MSW i times to the right
+sub   $r1, $r2            #subs x MSW from y MSW
+mv    $r0, 3
+sw    $r1, $r0            #saves new value of y MSW to mem loc 3
+
+#Y fully updated
+# SumAngle turn
+
+mv    $r0, 7
+lw    $r0, $r0            #loads SumAngle MSW from mem loc 7
+mv    $r1, 7
+addi  $r1, 1
+lw    $r1, $r1            #loads SumAngle LSW from mem loc 8
+
+lreg  $r2, $r6
+add   $r0, $r2            #adds Ang into SumAngle for MSW
+lreg  $r2, $r7
+add   $r1, $r2            #adds Ang into SumAngle for LSW
+
+mv    $r2, 7
+sw    $r0, $r2            #stores new SumAngle into mem loc 7
+mv    $r2, 7
+addi  $r2, 1
+sw    $r1, $r2            #stores new sumAngle into mem loc 8
+
+#sumAngle updated
+#now shift Ang
+
+lreg  $r2, $r6            #gets Ang MSW from r6
+srl   $r2, $r1              #shifts Ang MSW to the right once
+sreg  $r2, $r6            #stores shifted Ang MSW back to r6
+lreg  $r2, $r7            #gets Ang LSW from r7
+srl   $r2, $r1              #shifts Ang LSW to the right once
+sreg  $r2, $r7            #stores Ang LSW back into r7
+
+Addi  $r3, 1              #incr our counter
+sreg  $r3, $r4            #stores new counter to r4
+sez   $r0
+bez   $r0, LOOP           #branch always to LOOP
+
+ELSE:
+
+mv    $r2, 1
+lw    $r2, $r2            #load mem loc 1 into r2
+#lreg  $r3, $r4           #loads i which is loop counter into accessible register
+
+srl   $r0, $r3            #shift Y MSW i times to the right
+sub   $r2, $r0            #subs shifted Y MSW to X MSW
+sreg  $r1, $r5            #temporarily store r1 to r5, r1 being Y LSW
+mv    $r1, 1
+sw    $r2, $r1            #stores new value for X MSW into mem loc 1
+
+lreg  $r1, $r5            #get old val of r1 back aka Y LSW
+srl   $r1, $r3            #shifts Y LSW i times to the right
+mv    $r2, 2
+lw    $r2, $r2            #load mem loc 2 into r2 aka X LSW
+sub   $r2, $r1            #subs shifted Y LSW to X LSW
+mv    $r1, 2
+sw    $r2, $r1            #stores new value for X LSW into mem loc 2
+
+#X is now fully updated
+#Y's turn
+
+mv    $r1, 4
+lw    $r1, $r1            #loads mem loc 4 into r1 aka Y LSW
+srl   $r2, $r3            #shifts X LSW i times to the right
+add   $r1, $r2            #add X LSW from Y LSW
+mv    $r2, 4
+sw    $r1, $r2            #saves new value of y LSW into mem loc 4
+
+mv    $r1, 3
+lw    $r1, $r1            #loads y MSW from mem loc 3
+mv    $r0, 1
+lw    $r2, $r0            #loads x MSW from mem loc 1
+
+srl   $r2, $r3            #shifts x MSW i times to the right
+add   $r1, $r2            #add x MSW from y MSW
+mv    $r0, 3
+sw    $r1, $r0            #saves new value of y MSW to mem loc 3
+
+#Y fully updated
+# SumAngle turn
+
+mv    $r0, 7
+lw    $r0, $r0            #loads SumAngle MSW from mem loc 7
+mv    $r1, 7
+addi  $r1, 1
+lw    $r1, $r1            #loads SumAngle LSW from mem loc 8
+
+lreg  $r2, $r6
+sub   $r0, $r2            #sub Ang into SumAngle for MSW
+lreg  $r2, $r7
+sub   $r1, $r2            #sub Ang into SumAngle for LSW
+
+mv    $r2, 7
+sw    $r0, $r2            #stores new SumAngle into mem loc 7
+mv    $r2, 7
+addi  $r2, 1
+sw    $r1, $r2            #stores new sumAngle into mem loc 8
+
+#sumAngle updated
+#now shift Ang
+
+lreg  $r2, $r6            #gets Ang MSW from r6
+srl   $r2, $r1              #shifts Ang MSW to the right once
+sreg  $r2, $r6            #stores shifted Ang MSW back to r6
+lreg  $r2, $r7            #gets Ang LSW from r7
+srl   $r2, $r1              #shifts Ang LSW to the right once
+sreg  $r2, $r7            #stores Ang LSW back into r7
+
+Addi  $r3, 1              #incr our counter
+sreg  $r3, $r4            #stores new counter to r4
+sez   $r0
+bez   $r0, LOOP           #branch always to LOOP
+
+END:
+mv   $r2, 1
+mv   $r3, 2
+lw   $r0, $r2		      #get msw X from mem loc 1
+lw   $r1, $r3		      #get lsw X from mem loc 2
+
+mv   $r2, 5
+mv   $r3, 6
+sw   $r0, $r2		      #save msw X into mem loc 5
+sw   $r1, $r3		      #save lsw X into mem loc 6
+
+
+Ht					      #end program execution
