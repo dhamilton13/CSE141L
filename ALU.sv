@@ -11,41 +11,46 @@ const logic [4:0]SEZ = 5'b01011;
 const logic [4:0]SEQ = 5'b01100;
 const logic [4:0]MOD = 5'b01111;
 const logic [4:0]ADDI = 5'b100XX;
+const logic [4:0]BNE = 5'b101XX;
+const logic [4:0]BEZ = 5'b110XX;
+const logic [4:0]MV = 5'b111XX;
 
 	 
 module ALU(
   input [4:0] OP,
   input [7:0] inOne,
   input [7:0] inTwo,
-  output logic [7:0] res,
-  output logic ZERO
+  output logic [7:0] result,
+  output logic branchCompPass
     );
 	 
 	
   always_comb begin
 	
 	case(OP)
-	  ADD : res = inOne+inTwo;
-	  SUB : res = inOne-inTwo;
-	  SLL : res = inOne << inTwo;
-	  SRL : res = inOne >> inTwo;
-	  SLT:  res = (inOne < inTwo) ? 8'b00000001 : 8'b0;
-	  SUBU: res = inOne - $unsigned (inTwo);
-          ADDU: res = inOne + $unsigned (inTwo);
-	  AND:  res = inOne & inTwo;
-	  SEZ:  res = 8'b0;
-	  SEQ:  res = (inOne == inTwo) ? 8'b00000001 : 8'b0;
-	  MOD:  res = inOne % inTwo;
-	  ADDI: res = inOne+inTwo;
-	  default: res = 0;
+		ADD : res = inOne+inTwo;
+		SUB : res = inOne-inTwo;
+		SLL : res = inOne << inTwo;
+		SRL : res = inOne >> inTwo;
+		SLT : res = (inOne < inTwo) ? 8'b00000001 : 8'b0;
+		SUBU: res = inOne - $unsigned (inTwo);
+		ADDU: res = inOne + $unsigned (inTwo);
+		AND : res = inOne & inTwo;
+		SEZ : res = 8'b0;
+		SEQ : res = (inOne == inTwo) ? 8'b00000001 : 8'b0;
+		MOD : res = inOne % inTwo;
+		ADDI: res = inOne+inTwo;
+		BNE : begin 
+			  res = (inOne != 0) ? inTwo : 8'b0;
+			  branchCompPass = (inOne == 0) ? 1'b1 : 1'b0;
+			  end
+		BEZ : begin 
+			  res = (inOne == 0) ? inTwo : 8'b0;
+			  branchCompPass = (inOne == 0) ? 1'b1 : 1'b0;
+			  end
+		MV  : res = inTwo;
+		default: res = 0;
 	endcase
-	 
-	case(res)
-	  8'b0 :   ZERO = 1'b1;
-	  default : ZERO = 1'b0;
-	endcase
-
-
   end
 
 endmodule

@@ -13,24 +13,38 @@
 import definitions::*;
 module Control(
     input        [4:0] OPCODE,
-    output logic [1:0] ALU_OP,
+    output logic [4:0] ALU_OP,
+    output logic [1:0] ALU_SRC_A,
     output logic [1:0] ALU_SRC_B,
+    output logic       R_Type,
     output logic       REG_WRITE,
     output logic       BRANCH,
     output logic       MEM_WRITE,
     output logic       MEM_READ,
     output logic       REG_DST,
     output logic       MEM_TO_REG,
-	output logic       HALT
+    output logic       HALT
     );
-	always_comb	begin
-		
+
+//const logic [4:0]ADD = 5'b00000;
+//const logic [4:0]SUB = 5'b00001;
+//const logic [4:0]SLL = 5'b00010;
+//const logic [4:0]SRL = 5'b00011;
+//const logic [4:0]SLT = 5'b00111;
+//const logic [4:0]SUBU = 5'b01000;
+//const logic [4:0]ADDU = 5'b01001;
+//const logic [4:0]AND = 5'b01010;
+//const logic [4:0]SEZ = 5'b01011;
+//const logic [4:0]SEQ = 5'b01100;
+//const logic [4:0]MOD = 5'b01111;
+//const logic [4:0]ADDI = 5'b100XX;
+	always_comb begin
 	  case(OPCODE)
-	  	0 :	begin
+	  	0 : begin
 			  REG_DST    = 1;
 			  BRANCH     = 0;
 			  ALU_SRC_B  = 2; 	 // 2 is 0 don't care
-			  ALU_OP     = kADD; 
+			  ALU_OP     = ADD; 
 			  MEM_TO_REG = 0;	 // use mem read
 			  MEM_READ   = 1;
 			  MEM_WRITE  = 0;
@@ -41,7 +55,7 @@ module Control(
 			  REG_DST    = 0;
 			  BRANCH     = 0;
 			  ALU_SRC_B  = 2'b1; // 1 is SE 3 bit immediate
-			  ALU_OP     = kADD; 
+			  ALU_OP     = SUB; 
 			  MEM_TO_REG = 1;	 // use alu result
 			  MEM_READ   = 0;
 			  MEM_WRITE  = 0;
@@ -52,7 +66,7 @@ module Control(
 			  REG_DST    = 1; 	 // don't care
 			  BRANCH     = 0;
 			  ALU_SRC_B  = 2; 	 // 2 is 0, don't care
-			  ALU_OP     = kADD;
+			  ALU_OP     = SLL;
 			  MEM_TO_REG = 1;	 // use alu, don't care
 			  MEM_READ   = 0;
 			  MEM_WRITE  = 1;
@@ -63,7 +77,7 @@ module Control(
 			  REG_DST    = 1;    // don't care
 			  BRANCH     = 1;
 			  ALU_SRC_B  = 2; 	 // 2 is zero
-			  ALU_OP     = kSUB; 
+			  ALU_OP     = SRL; 
 			  MEM_TO_REG = 1;	 // use alu, don't care
 			  MEM_READ   = 0;
 			  MEM_WRITE  = 0;
@@ -74,7 +88,7 @@ module Control(
 			  REG_DST    = 1;    // don't care
 			  BRANCH     = 1;
 			  ALU_SRC_B  = 2; 	 // 2 is zero
-			  ALU_OP     = kSAL; 
+			  ALU_OP     = SLT; 
 			  MEM_TO_REG = 1;	 // use alu, don't care
 			  MEM_READ   = 0;
 			  MEM_WRITE  = 0;
@@ -85,7 +99,7 @@ module Control(
 			  REG_DST    = 0;    // don't care
 			  BRANCH     = 0;
 			  ALU_SRC_B  = 0; 	 // 2 is zero
-			  ALU_OP     = kADD; 
+			  ALU_OP     = SUBU; 
 			  MEM_TO_REG = 1;	 // use alu, don't care
 			  MEM_READ   = 0;
 			  MEM_WRITE  = 0;
@@ -96,12 +110,12 @@ module Control(
 			  REG_DST    = 0;    // don't care
 			  BRANCH     = 0;
 			  ALU_SRC_B  = 0; 	 // 2 is zero
-			  ALU_OP     = kADD; 
+			  ALU_OP     = ADDU; 
 			  MEM_TO_REG = 1;	 // use alu, don't care
 			  MEM_READ   = 0;
 			  MEM_WRITE  = 0;
 			  REG_WRITE  = 0;		  
-		     HALT = 1;
+		     	  HALT = 1;
 			end
 		endcase
 	end
