@@ -24,8 +24,8 @@ Loop:
 	Mv   r3, 0	  #reset r3
 4cmploop:
 	Add r3, r0		#should set r3 as our bit seq
-  	And r3, r1	  #r3 = r1 AND r0 so if leftmost bits of r0 == r1 then #r3 will match our bit pattern
-  	Sub r3, r0  	#if the and created the same pattern as r0 this #should result in 0
+  And r3, r1	  #r3 = r1 AND r0 so if leftmost bits of r0 == r1 then #r3 will match our bit pattern
+  Sub r3, r0  	#if the and created the same pattern as r0 this #should result in 0
 	Bez r3, Matched	#branch to Matched segment, r3 now free
 4cmpshift:
 	Mv  r3, 0       	#set r3 to 0

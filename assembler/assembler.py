@@ -71,10 +71,11 @@ for line in inputFile:
         continue
     if 'bez' in formatted[0] or 'bne' in formatted[0]:
         outputFile.write(binaryMappings['breg'])
-        outputFile.write(str(labeldict[formatted[2]]).zfill(8)[:4])
+        branchLocationString = "{0:08b}".format(labeldict[formatted[2]])
+        outputFile.write(branchLocationString[:4])
         outputFile.write('\n')
         outputFile.write(binaryMappings['slra'])
-        outputFile.write(str(labeldict[formatted[2]]).zfill(8)[4:])
+        outputFile.write(branchLocationString[4:])
         outputFile.write('\n')
     for word in formatted:
         if jmpChar in word or commentChar in word:
