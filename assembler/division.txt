@@ -23,58 +23,50 @@ sreg  $r3, $r7
 
 LOOP:
 lreg  $r2, $r6          #loads the divisor
+lreg  $r1, $r5
 slt   $r2, $r1          #sets r2 to 0/1 one if its less than r1 or not
-bne   $r2, SHIFT        #jumps to shift on condition
+bez   $r2, SHIFT        #jumps to shift on condition
 
-lreg  $r2, $r6  #loads the divisor
-subu  $r1, $r2         #subtracts the divisor from the LSW
+lreg  $r2, $r6          #loads the divisor
+subu  $r1, $r2          #subtracts the divisor from the LSW
 
-sez   $r2               #set to zero
-addi  $r2, -1           #next three loads 11111111 into the register
-srl   $r2, $r2          #shifts 4 bits
-addi  $r2, -1
-seq   $r2, $r3          #checks if LSW quotient accumulator is full
+
 addi  $r3, 1            #resets it to 0 if it is or incr if not
 bez   $r3, INCRMSW      #jumps to increment the MSW
+mv    $r2, 0
 bez   $r0, LOOP        #reloops by comparing to 0(r15) automatically
 
 INCRMSW:
 lreg  $r3, $r7  #loads the current MSW
 addi  $r3, 1            #incr by 1
 sreg  $r3, $r7  #resaves the MSW
-sez   $r3               #resets our LSW quotient accumulator
+mv    $r3, 0               #resets our LSW quotient accumulator
 
 bez   $r3, LOOP        #resets loop
 
 
 SHIFT:
 bez   $r0, DONE         #if MSW of dividend is already 0 then DONE
-sez   $r2
-addi  $r2, 1
-and   $r2, $r0          #checks if MSW's LSb is 1
-bez   $r2, SHIFT
-srl   $r0, $r1          #shifts right by 1
-bez   $r2, SHIFT        #if not continues shifting
-sez   $r2
+mv    $r2, 1
+subu  $r0, $r2
+mv    $r2, -1
+sll   $r2, $r2
 addi  $r2, -1
-srl   $r2, $r2
-addi  $r2, -1
-addu  $r1, $r2          #adds 11111111 to the dividend LSW
-lreg  $r2, $r2
-subu  $r1, $r2          #subs our dividend
-addi  $r1, 1            #adds the last 1 to our LSW
-addi  $r2, -1
-srl   $r2, $r2
-addi  $r2, -1
-seq   $r2, $r3          #checks for full quotient LSW
+lreg  $r1, $r6
+subu  $r2, $r1          #subs 11111111 to the dividend LSW
+lreg  $r1, $r5
+addu  $r1, $r2
+addi  $r1, 1
+
 addi  $r3, 1
-bez   $r2, INCRMSW
-bez   $r0, LOOP         #loops on r15 automatically
+bez   $r3, INCRMSW
+mv    $r2, 0
+bez   $r2, LOOP         #loops on r15 automatically
 
 
 DONE:
-mv    $r3, 7
-sll   $r3, $r3
-addi   $r3, -1
-sw    $r3, [$r3]   #stores the LSW quotient to memory,
+mv    $r2, 7
+sll   $r2, $r2
+addi  $r2, -1
+sw    $r3, [$r2]   #stores the LSW quotient to memory,
 ht                      #our MSW is already stored

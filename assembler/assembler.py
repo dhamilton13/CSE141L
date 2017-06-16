@@ -79,7 +79,7 @@ for line in inputFile:
         outputFile.write('\n')
     for word in formatted:
         if commentChar in word:
-            outputFile.write('\n')
+            #outputFile.write('\n')
             break
         #if any(char in commentChar for char in word):
             #break
@@ -90,9 +90,9 @@ for line in inputFile:
             outputFile.write(binaryMappings[word])
         else:
             print("Word is not a key: " + word)
-            outputFile.write('\n')
+            #outputFile.write('\n')
             break
-    #outputFile.write("    //{}".format(line))
+    outputFile.write("    //{}".format(line))
 
 
 inputFile.close();

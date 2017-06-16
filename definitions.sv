@@ -18,8 +18,8 @@ const logic [4:0]SREG = 5'b01101;
 const logic [4:0]LREG= 5'b01110;
 const logic [4:0]MOD = 5'b01111;
 const logic [4:0]ADDI = 5'b100XX;
-const logic [4:0]BNE = 5'b101XX;
-const logic [4:0]BEZ = 5'b110XX;
+const logic [4:0]BEZ = 5'b101XX;
+const logic [4:0]BNE = 5'b110XX;
 const logic [4:0]MV = 5'b111XX;
 
 endpackage // defintions

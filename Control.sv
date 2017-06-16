@@ -14,7 +14,7 @@ import definitions::*;
 module Control(
     input        [8:0] OPCODE,
     output logic [4:0] ALU_OP,
-    output logic [1:0] ALU_SRC_A,
+    output logic [3:0] ALU_SRC_A,
     output logic [3:0] ALU_SRC_B,
     output logic       R_Type,
     output logic       REG_WRITE,
@@ -140,7 +140,7 @@ module Control(
 							MEM_READ   = 0;
 							REG_DST    = 4'b1000;
 							MEM_TO_REG = 0;
-							HALT       = 1;
+							HALT       = 0;
 						end
 					8: //subu skip for now
 						begin
@@ -154,7 +154,7 @@ module Control(
 							MEM_READ   = 0;
 							REG_DST    = 0;
 							MEM_TO_REG = 0;
-							HALT       = 1;
+							HALT       = 0;
 						end
 					9: //addu skip for now
 						begin
@@ -168,7 +168,7 @@ module Control(
 							MEM_READ   = 0;
 							REG_DST    = 0;
 							MEM_TO_REG = 0;
-							HALT       = 1;
+							HALT       = 0;
 						end
 					10: //and
 						begin
@@ -244,8 +244,8 @@ module Control(
 						begin
 							ALU_OP     = MOD;
 							ALU_SRC_A  = OPCODE[3:2];
-							ALU_SRC_B  = (OPCODE[1:0]);
-							R_Type     = 1;
+							ALU_SRC_B  = 4'b0010;
+							R_Type     = 0;
 							REG_WRITE  = 1;
 							BRANCH     = 0;
 							MEM_WRITE  = 0;
@@ -277,7 +277,7 @@ module Control(
 							ALU_OP     = 5'b10100;//hardcoded because XX value in definitions
 							ALU_SRC_A  = OPCODE[1:0];
 							ALU_SRC_B  = 4'b1000;
-							R_Type     = 0;
+							R_Type     = 1;
 							REG_WRITE  = 0;
 							BRANCH     = 1;
 							MEM_WRITE  = 0;
@@ -291,7 +291,7 @@ module Control(
 							ALU_OP     = 5'b11000;//hardcoded because XX value in definitions
 							ALU_SRC_A  = OPCODE[1:0];
 							ALU_SRC_B  = 4'b1000;
-							R_Type     = 0;
+							R_Type     = 1;
 							REG_WRITE  = 0;
 							BRANCH     = 1;
 							MEM_WRITE  = 0;

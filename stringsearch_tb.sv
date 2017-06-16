@@ -41,6 +41,7 @@ initial begin
 // clear reg. file -- you may load any constants you wish here
   for(int i=0; i<16; i++)
 	DUT.reg_file.core[i] = 8'b0;
+  DUT.reg_file.core[0] = 8'b00001001;
   reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
 // load instruction ROM	-- unfilled elements will get x's -- should be harmless
   //$readmemb("instr.txt",DUT.instr_rom.core); //DYLAN COMMENTED THIS OUT WE JOINED TO program_counter
@@ -65,7 +66,8 @@ initial begin
 // clear reg. file -- you may load any constants you wish here
   for(int i=0; i<16; i++)
 	DUT.reg_file.core[i] = 8'b0;
-	
+  DUT.reg_file.core[0] = 8'b00001001;
+
   reg_four_count = DUT.reg_file.core[4];//DYLAN ADDED
 // load instruction ROM	-- unfilled elements will get x's -- should be harmless
   //$readmemb("instr.txt",DUT.instr_rom.core);//DYLAN COMMENTED THIS OUT WE JOINED TO program_counter
@@ -91,6 +93,7 @@ initial begin
 // clear reg. file -- you may load any constants you wish here
   for(int i=0; i<16; i++)
 	DUT.reg_file.core[i] = 8'b0;
+  DUT.reg_file.core[0] = 8'b00001001;
 // load instruction ROM	-- unfilled elements will get x's -- should be harmless
   //$readmemb("instr.txt",DUT.instr_rom.core);//DYLAN COMMENTED THIS OUT WE JOINED TO program_counter
 //  $monitor ("string=%b,sequence=%b,count=%d\n",string1, sequence1, count);

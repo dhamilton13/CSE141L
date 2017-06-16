@@ -10,323 +10,471 @@ cModel Technology
 dD:/Altera/modelsim_ase/win32aloem
 vALU
 Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-DXx4 work 11 ALU_sv_unit 0 22 z7e7`oRNAQm?HH8D1Um@K0
-Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z1 DXx4 work 11 definitions 0 22 EBnNPgA:Ik:?8@0l<fiig2
+DXx4 work 11 ALU_sv_unit 0 22 `;]fIgH?PaQWf@iMXdhN20
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 r1
 !s85 0
 31
 !i10b 1
-!s100 <i5?`;6XImSca2LgCP]a31
-Ig[Z00GS2k9jYnUbjDVW6@1
+!s100 Sl4`j_XNU_]1]S]IBDG:F2
+Iz=JEALR9?cTL<FGXE89]k2
 !s105 ALU_sv_unit
 S1
-Z2 dD:/School_Work/CSE141LProjects
-Z3 w1496457130
-Z4 8D:\School_Work\CSE141LProjects\ALU.sv
-Z5 FD:\School_Work\CSE141LProjects\ALU.sv
-L0 16
-Z6 OV;L;10.5b;63
-Z7 !s108 1496471628.000000
-Z8 !s107 D:\School_Work\CSE141LProjects\ALU.sv|
-Z9 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\ALU.sv|
+Z3 dC:/Users/timot_000/Desktop/cse141L misc/CSE141L
+Z4 w1497646915
+Z5 8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALU.sv
+Z6 FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALU.sv
+L0 3
+Z7 OV;L;10.5b;63
+Z8 !s108 1497647072.000000
+Z9 !s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALU.sv|
+Z10 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALU.sv|
 !i113 1
-Z10 o-work work -sv
-Z11 tCvgOpt 0
+Z11 o-work work -sv
+Z12 tCvgOpt 0
 n@a@l@u
 XALU_sv_unit
 R0
-Vz7e7`oRNAQm?HH8D1Um@K0
+R1
+V`;]fIgH?PaQWf@iMXdhN20
 r1
 !s85 0
 31
 !i10b 1
-!s100 j>Y11[acBfl^bOL7POZZU3
-Iz7e7`oRNAQm?HH8D1Um@K0
+!s100 _<JP1D@`748PVdl598Pf:1
+I`;]fIgH?PaQWf@iMXdhN20
 !i103 1
 S1
-R2
 R3
 R4
 R5
-L0 2
 R6
+L0 1
 R7
 R8
 R9
-!i113 1
 R10
+!i113 1
 R11
+R12
 n@a@l@u_sv_unit
 vALUTestBench
 R0
-Z12 !s110 1496471628
+Z13 !s110 1497647072
 !i10b 1
 !s100 GOROHaDchzUXkFRmcKoZP1
-IEHQ6U<@1RClm=ZZERVH>=1
-R1
+Ib@YYT;2hmN1XmB:TDm`?i3
+R2
 !s105 ALUTestBench_sv_unit
 S1
-R2
 R3
-8D:\School_Work\CSE141LProjects\ALUTestBench.sv
-FD:\School_Work\CSE141LProjects\ALUTestBench.sv
+Z14 w1497593465
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALUTestBench.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALUTestBench.sv
 L0 3
-R6
+R7
 r1
 !s85 0
 31
-R7
-!s107 D:\School_Work\CSE141LProjects\ALUTestBench.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\ALUTestBench.sv|
+R8
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALUTestBench.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ALUTestBench.sv|
 !i113 1
-R10
 R11
+R12
 n@a@l@u@test@bench
 vControl
 R0
-Z13 DXx4 work 11 definitions 0 22 Ed6:?_B2j=ZB1bmJlzYz:2
-DXx4 work 15 Control_sv_unit 0 22 I9hWfkIYf^=k>:;GZgKTo2
 R1
+DXx4 work 15 Control_sv_unit 0 22 8DmFiIbF5fB5Z1H8PV3LI2
+R2
 r1
 !s85 0
 31
 !i10b 1
-!s100 `gb4h:2F0jQPkgQkNfT:A3
-IkOBjgz81A1N2Ji4hBRmGF2
+!s100 kXUdRdMWB1kPm[<N1DmRK1
+IiTj`mZffmoS[Xa[Da2k@O3
 !s105 Control_sv_unit
 S1
-R2
-Z14 w1496467621
-Z15 8D:\School_Work\CSE141LProjects\Control.sv
-Z16 FD:\School_Work\CSE141LProjects\Control.sv
+R3
+Z15 w1497644969
+Z16 8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control.sv
+Z17 FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control.sv
 L0 14
-R6
 R7
-Z17 !s107 D:\School_Work\CSE141LProjects\Control.sv|
-Z18 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\Control.sv|
+R8
+Z18 !s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control.sv|
+Z19 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control.sv|
 !i113 1
-R10
 R11
+R12
 n@control
 XControl_sv_unit
 R0
-R13
-VI9hWfkIYf^=k>:;GZgKTo2
+R1
+V8DmFiIbF5fB5Z1H8PV3LI2
 r1
 !s85 0
 31
 !i10b 1
 !s100 fnFiCL8>a1M_AUOTLAeH^0
-II9hWfkIYf^=k>:;GZgKTo2
+I8DmFiIbF5fB5Z1H8PV3LI2
 !i103 1
 S1
-R2
-R14
+R3
 R15
 R16
-Z19 L0 13
-R6
-R7
 R17
+Z20 L0 13
+R7
+R8
 R18
+R19
 !i113 1
-R10
 R11
+R12
 n@control_sv_unit
 vControl_tb
 R0
-R13
-DXx4 work 18 Control_tb_sv_unit 0 22 FRJKSM^Pb4Wc=RJIjzOeW2
 R1
+DXx4 work 18 Control_tb_sv_unit 0 22 Q;_RiEM?9^iC]Y=dkNo0d2
+R2
 r1
 !s85 0
 31
 !i10b 1
 !s100 S[3l5Wm8GEzVEW268>5;P0
-IGM]hifiJoQn0]^=P:MV@>3
+ILZ[BgDLL1z:gnldU3JIhZ2
 !s105 Control_tb_sv_unit
 S1
-R2
-Z20 w1496468378
-Z21 8D:\School_Work\CSE141LProjects\Control_tb.sv
-Z22 FD:\School_Work\CSE141LProjects\Control_tb.sv
+R3
+R14
+Z21 8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control_tb.sv
+Z22 FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control_tb.sv
 L0 24
-R6
 R7
-Z23 !s107 D:\School_Work\CSE141LProjects\Control_tb.sv|
-Z24 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\Control_tb.sv|
+R8
+Z23 !s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control_tb.sv|
+Z24 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/Control_tb.sv|
 !i113 1
-R10
 R11
+R12
 n@control_tb
 XControl_tb_sv_unit
 R0
-R13
-VFRJKSM^Pb4Wc=RJIjzOeW2
+R1
+VQ;_RiEM?9^iC]Y=dkNo0d2
 r1
 !s85 0
 31
 !i10b 1
 !s100 e^nDJCA`2l[:c1a<Z=oV?1
-IFRJKSM^Pb4Wc=RJIjzOeW2
+IQ;_RiEM?9^iC]Y=dkNo0d2
 !i103 1
 S1
-R2
-R20
+R3
+R14
 R21
 R22
 L0 22
-R6
 R7
+R8
 R23
 R24
 !i113 1
-R10
 R11
+R12
 n@control_tb_sv_unit
 vDataRAM
 R0
-R12
+Z25 !s110 1497647073
 !i10b 1
-!s100 QFLDYCJ9EKNS^UngMD:FY3
-If;9^FHUX[P[aHA]7ezlzl3
-R1
+!s100 c53WUm;a70gZFhiO=mIdc2
+I:P_LAmER5P_ed=c;TIIQ62
+R2
 !s105 DataRAM_sv_unit
 S1
-R2
 R3
-8D:\School_Work\CSE141LProjects\DataRAM.sv
-FD:\School_Work\CSE141LProjects\DataRAM.sv
-R19
-R6
+Z26 w1497629716
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/DataRAM.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/DataRAM.sv
+R20
+R7
 r1
 !s85 0
 31
-R7
-!s107 D:\School_Work\CSE141LProjects\DataRAM.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\DataRAM.sv|
+Z27 !s108 1497647073.000000
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/DataRAM.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/DataRAM.sv|
 !i113 1
-R10
 R11
+R12
 n@data@r@a@m
 Xdefinitions
 R0
-R12
+R25
 !i10b 1
-!s100 jGbU:`IM?d8=SUnM`_[nP2
-IEd6:?_B2j=ZB1bmJlzYz:2
-VEd6:?_B2j=ZB1bmJlzYz:2
+!s100 I=id]b;^SH2B[Qe:]UA1C1
+IEBnNPgA:Ik:?8@0l<fiig2
+VEBnNPgA:Ik:?8@0l<fiig2
 S1
-R2
-w1496467508
-8D:/School_Work/CSE141LProjects/definitions.sv
-FD:/School_Work/CSE141LProjects/definitions.sv
+R3
+w1497641406
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/definitions.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/definitions.sv
 L0 2
-R6
+R7
 r1
 !s85 0
 31
-R7
-!s107 D:/School_Work/CSE141LProjects/definitions.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/definitions.sv|
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/definitions.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/definitions.sv|
 !i113 1
-R10
 R11
+R12
 vinstr_ROM
 R0
-R12
+R25
 !i10b 1
 !s100 0EZcHh6g06mXG^JiZ8U@z3
-IR8OkdZTNTNbo6QEdfQn__0
-R1
+Im;m68SiDVFgSHHXAlnKLI2
+R2
 !s105 instrROM_sv_unit
 S1
-R2
 R3
-8D:/School_Work/CSE141LProjects/instrROM.sv
-FD:/School_Work/CSE141LProjects/instrROM.sv
+w1497608564
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/instrROM.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/instrROM.sv
 L0 1
-R6
+R7
 r1
 !s85 0
 31
-R7
-!s107 D:/School_Work/CSE141LProjects/instrROM.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/instrROM.sv|
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/instrROM.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/instrROM.sv|
 !i113 1
-R10
 R11
+R12
 ninstr_@r@o@m
 vprogram_counter
 R0
-R12
+R25
 !i10b 1
-!s100 Ij9oja8IKVY6TMh>o]jWz2
-I8hB^z2<9gEaNUgV?58I782
-R1
+!s100 ;G9zYOS6N4?i?aUYj@8gK2
+ICjKaMn3C5Vi5z@6VA9LG@1
+R2
 !s105 programcounter_sv_unit
 S1
-R2
-w1496469850
-8D:/School_Work/CSE141LProjects/programcounter.sv
-FD:/School_Work/CSE141LProjects/programcounter.sv
+R3
+w1497645843
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/programcounter.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/programcounter.sv
 L0 1
-R6
+R7
 r1
 !s85 0
 31
-R7
-!s107 D:/School_Work/CSE141LProjects/programcounter.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/programcounter.sv|
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/programcounter.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/programcounter.sv|
 !i113 1
-R10
 R11
+R12
+vRAM
+R0
+!s110 1497634076
+!i10b 1
+!s100 8`0@[on9dYlIYC@GBm@?Z1
+IB2O<8N>R15F0<H3KF?zSI0
+R2
+!s105 RAM_sv_unit
+S1
+R3
+R26
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/RAM.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/RAM.sv
+L0 1
+R7
+r1
+!s85 0
+31
+!s108 1497634076.000000
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/RAM.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/RAM.sv|
+!i113 1
+R11
+R12
+n@r@a@m
 vreg_file
 R0
-R12
+R25
 !i10b 1
-!s100 bcKOgQmn4adlKPOOJ8oaC2
-ISIIYMUgm0J56:H]LN3zIk3
-R1
+!s100 ;]@LBn7<TzQXJf2MYU^V<0
+IeSlnEPGPnOF0RnJDB58Q[1
+R2
 !s105 regfile_sv_unit
 S1
-R2
 R3
-8D:/School_Work/CSE141LProjects/regfile.sv
-FD:/School_Work/CSE141LProjects/regfile.sv
-R19
-R6
+w1497635756
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/regfile.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/regfile.sv
+R20
+R7
 r1
 !s85 0
 31
-R7
-!s107 D:/School_Work/CSE141LProjects/regfile.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/regfile.sv|
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/regfile.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/regfile.sv|
 !i113 1
-R10
 R11
+R12
+vrf
+R0
+R25
+!i10b 1
+!s100 UJ>ca?Gg7G=8_:jDh9HG62
+IYQhj^4GAn7d^zo=AlM5_:1
+R2
+!s105 rf_sv_unit
+S1
+R3
+R26
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/rf.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/rf.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/rf.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/rf.sv|
+!i113 1
+R11
+R12
+vROM
+R0
+R25
+!i10b 1
+!s100 ]dDA=RMWBD3Df`cMeM]272
+IQ[70_WYSP6V_U:?Ed;MF92
+R2
+!s105 ROM_sv_unit
+S1
+R3
+R26
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ROM.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/ROM.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ROM.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/ROM.sv|
+!i113 1
+R11
+R12
+n@r@o@m
+vstringsearch
+R0
+R25
+!i10b 1
+!s100 d<h?;l@>5X0`N_LWOn1d41
+I`Q?Fh2<UCHXaBSLJD2ORO1
+R2
+!s105 stringsearch_sv_unit
+S1
+R3
+R26
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/stringsearch.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/stringsearch.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/stringsearch.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/stringsearch.sv|
+!i113 1
+R11
+R12
+vstringsearch_tb
+R0
+R25
+!i10b 1
+!s100 `Yc5:DAG>Y4FXVF=[Fdz@0
+IYJo?PT>H51T;`N?N[T8fm0
+R2
+!s105 stringsearch_tb_sv_unit
+S1
+R3
+w1497647063
+8C:\Users\timot_000\Desktop\cse141L misc\CSE141L\stringsearch_tb.sv
+FC:\Users\timot_000\Desktop\cse141L misc\CSE141L\stringsearch_tb.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R27
+!s107 C:\Users\timot_000\Desktop\cse141L misc\CSE141L\stringsearch_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:\Users\timot_000\Desktop\cse141L misc\CSE141L\stringsearch_tb.sv|
+!i113 1
+R11
+R12
+vtop_level_fromtb
+R0
+R25
+!i10b 1
+!s100 [z7]nV@NdWkPnK=NhVj`10
+If45bI68]YfdjhRCZ3b=443
+R2
+!s105 top_level_fromtb_sv_unit
+S1
+R3
+R26
+8C:/Users/timot_000/Desktop/cse141L misc/CSE141L/top_level_fromtb.sv
+FC:/Users/timot_000/Desktop/cse141L misc/CSE141L/top_level_fromtb.sv
+L0 1
+R7
+r1
+!s85 0
+31
+R27
+!s107 C:/Users/timot_000/Desktop/cse141L misc/CSE141L/top_level_fromtb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Users/timot_000/Desktop/cse141L misc/CSE141L/top_level_fromtb.sv|
+!i113 1
+R11
+R12
 vTopLevel
 R0
-R12
+R13
 !i10b 1
-!s100 LR5T1W4BOli<E9963]4j30
-IN>m9a0Sm]5i1j9D35Sdh_2
-R1
+!s100 bClGGMKl7WbgFe[J@:hIa3
+I[h6e7OTBz_TLhI:_i1RAl3
+R2
 !s105 TopLevel_sv_unit
 S1
-R2
 R3
-8D:\School_Work\CSE141LProjects\TopLevel.sv
-FD:\School_Work\CSE141LProjects\TopLevel.sv
-R19
-R6
+w1497640881
+8C:\Users\timot_000\Desktop\cse141L misc\CSE141L\TopLevel.sv
+FC:\Users\timot_000\Desktop\cse141L misc\CSE141L\TopLevel.sv
+R20
+R7
 r1
 !s85 0
 31
-R7
-!s107 D:\School_Work\CSE141LProjects\TopLevel.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\TopLevel.sv|
+R8
+!s107 C:\Users\timot_000\Desktop\cse141L misc\CSE141L\TopLevel.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:\Users\timot_000\Desktop\cse141L misc\CSE141L\TopLevel.sv|
 !i113 1
-R10
 R11
+R12
 n@top@level

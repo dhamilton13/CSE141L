@@ -20,7 +20,7 @@ always @(posedge CLK)
   else if(branch & jump)
     PC <= address;
   else
-    PC <= PC + 1; 
+    PC <= PC + 1;
 
   always_comb Instruction = Instructions[PC];
 endmodule

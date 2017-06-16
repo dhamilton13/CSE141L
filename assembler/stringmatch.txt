@@ -1,6 +1,5 @@
 ﻿Assembly:
 #setup portion
-  Mv r0, -7     #value 9 stored to r0
   Lw r0, [r0]		#mem location 9 stored to r0
   Sll r0, r0    #logical shift left 4, r0 = XXXX0000
 			          #r0 = comparison bits
@@ -57,6 +56,7 @@ LoopShift:
 IncLoop:
 	Lreg r3, r6		#bring outerloop counter to r3
 	Addi r3, -1		#decrement our loop counter
+  Sreg r3, r6
 	Bez r3, END		#if at the end of our loop then we end
   bne r3, Loop	#otherwise we reloop
 
@@ -69,7 +69,7 @@ Meminc:
   Bez r3, IncLoop	#branch to loop incrementer
 
 END:
-	Lreg r4, r0		#loads the number of matches to r0
+	Lreg r0, r4		#loads the number of matches to r0
 	mv   r1, 0		#place 10 decimal into r1
 	Addi r1, 5	#place 10 decimal into r1
 	mv   r2, 0		#place 10 decimal into r1
