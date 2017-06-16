@@ -6,11 +6,11 @@ binaryMappings = {
 'lw' : '00100',
 'sw' : '00101',
 'ht' : '001100000',
-'slt' : '00111',
+'breg' : '00111',
 'subu' : '01000',
 'addu' : '01001',
 'and' : '01010',
-'sez' : '0101100',
+'slra' : '01011',
 'seq' : '01100',
 'sreg' : '01101',
 'lreg' : '01110',
@@ -45,6 +45,9 @@ binaryMappings = {
 '-1' : '1111'
 }
 
+labeldict = {}
+linenum = 0
+ic = 0
 
 commentChar = "#"
 jmpChar = ":"
@@ -52,8 +55,27 @@ inputFile = open("stringmatch.txt", "r")
 outputFile = open("bin-stringmatch.txt", "w")
 for line in inputFile:
     formatted = line.replace(",", "").replace("[", "").replace("]", "").replace("$","").lower().split()
+    if len(formatted) == 0 or commentChar in formatted[0]:
+        continue
+    if jmpChar in formatted[0]:
+        labeldict[formatted[0][:-1]] = ic
+    elif 'bez' in formatted[0] or 'bne' in formatted[0]:
+        ic += 3
+    else:
+        ic += 1
+print labeldict
+inputFile = open("stringmatch.txt", "r")
+for line in inputFile:
+    formatted = line.replace(",", "").replace("[", "").replace("]", "").replace("$","").lower().split()
     if len(formatted) == 0 or commentChar in formatted[0] or jmpChar in formatted[0]:
         continue
+    if 'bez' in formatted[0] or 'bne' in formatted[0]:
+        outputFile.write(binaryMappings['breg'])
+        outputFile.write(str(labeldict[formatted[2]]).zfill(8)[:4])
+        outputFile.write('\n')
+        outputFile.write(binaryMappings['slra'])
+        outputFile.write(str(labeldict[formatted[2]]).zfill(8)[4:])
+        outputFile.write('\n')
     for word in formatted:
         if jmpChar in word or commentChar in word:
             break

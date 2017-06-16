@@ -18,31 +18,31 @@
         				#r3 free
         				#start looping for comparisons
 Loop:
-	Sez r3    #reset r3
+	Mv   r3, 0    #reset r3
 	Addi r3, 4		#initial counter for inner loop = 4
 	Sreg r3, r7 	#r7 = counter for inner loop starts as 4
-	Sez r3	  #reset r3
+	Mv   r3, 0	  #reset r3
 4cmploop:
 	Add r3, r0		#should set r3 as our bit seq
   	And r3, r1	  #r3 = r1 AND r0 so if leftmost bits of r0 == r1 then #r3 will match our bit pattern
   	Sub r3, r0  	#if the and created the same pattern as r0 this #should result in 0
 	Bez r3, Matched	#branch to Matched segment, r3 now free
 4cmpshift:
-	Sez r3       	#set r3 to 0
+	Mv  r3, 0       	#set r3 to 0
 	Addi r3, 1		#increment by 1 for shift
 	Sll r1, r3		#shift current string by 1, r3 now free
 	Lreg r3, r7		#load our inner loop counter
 	Addi r3, -1		#subtract our counter
 	bez r3, Loopshift	#if counter = 0 then done with 4cmploop
 	Sreg r3, r7		#put 4cmpcounter back in r7
-	Sez r3		#make r3 = 0 again
+	mv  r3, 0		#make r3 = 0 again
 	Bez r3, 4cmploop	#run our 4cmp loop again
 
 Matched:
 	Lreg r3, r4		#load current count into r3
 	Addi r3, 1		#increment count
 	Sreg r3, r4		#save count back to r4
-	Sez r3		#since no jmp we sez then bez
+	mv   r3, 0		#since no jmp we sez then bez
 	Bez r3, 4cmpshift
 
 LoopShift:
@@ -67,14 +67,14 @@ Meminc:
   Lw r2, [r3]		#loads next string element
   Addi r3, 1		#increment our string location counter
   Sreg r3, r5		#stores new mem loc back to r5
-  Sez r3		#set r3 = 0 for branch
+  mv   r3, 0		#set r3 = 0 for branch
   Bez r3, IncLoop	#branch to loop incrementer
 
 END:
 	Lreg r4, r0		#loads the number of matches to r0
-	Sez r1		#place 10 decimal into r1
+	mv   r1, 0		#place 10 decimal into r1
 	Addi r1, 5	#place 10 decimal into r1
-	Sez r2		#place 10 decimal into r1
+	mv   r2, 0		#place 10 decimal into r1
   Addi r2, 1	#place 10 decimal into r1
 	Sll r1, r2		#place 10 decimal into r1
 	Sw r0, [r1]		#saves num of matches stored in r0 to mem location 10
