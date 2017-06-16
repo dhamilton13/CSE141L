@@ -1,0 +1,332 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dD:/Altera/modelsim_ase/win32aloem
+vALU
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+DXx4 work 11 ALU_sv_unit 0 22 z7e7`oRNAQm?HH8D1Um@K0
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 <i5?`;6XImSca2LgCP]a31
+Ig[Z00GS2k9jYnUbjDVW6@1
+!s105 ALU_sv_unit
+S1
+Z2 dD:/School_Work/CSE141LProjects
+Z3 w1496457130
+Z4 8D:\School_Work\CSE141LProjects\ALU.sv
+Z5 FD:\School_Work\CSE141LProjects\ALU.sv
+L0 16
+Z6 OV;L;10.5b;63
+Z7 !s108 1496471628.000000
+Z8 !s107 D:\School_Work\CSE141LProjects\ALU.sv|
+Z9 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\ALU.sv|
+!i113 1
+Z10 o-work work -sv
+Z11 tCvgOpt 0
+n@a@l@u
+XALU_sv_unit
+R0
+Vz7e7`oRNAQm?HH8D1Um@K0
+r1
+!s85 0
+31
+!i10b 1
+!s100 j>Y11[acBfl^bOL7POZZU3
+Iz7e7`oRNAQm?HH8D1Um@K0
+!i103 1
+S1
+R2
+R3
+R4
+R5
+L0 2
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@a@l@u_sv_unit
+vALUTestBench
+R0
+Z12 !s110 1496471628
+!i10b 1
+!s100 GOROHaDchzUXkFRmcKoZP1
+IEHQ6U<@1RClm=ZZERVH>=1
+R1
+!s105 ALUTestBench_sv_unit
+S1
+R2
+R3
+8D:\School_Work\CSE141LProjects\ALUTestBench.sv
+FD:\School_Work\CSE141LProjects\ALUTestBench.sv
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:\School_Work\CSE141LProjects\ALUTestBench.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\ALUTestBench.sv|
+!i113 1
+R10
+R11
+n@a@l@u@test@bench
+vControl
+R0
+Z13 DXx4 work 11 definitions 0 22 Ed6:?_B2j=ZB1bmJlzYz:2
+DXx4 work 15 Control_sv_unit 0 22 I9hWfkIYf^=k>:;GZgKTo2
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 `gb4h:2F0jQPkgQkNfT:A3
+IkOBjgz81A1N2Ji4hBRmGF2
+!s105 Control_sv_unit
+S1
+R2
+Z14 w1496467621
+Z15 8D:\School_Work\CSE141LProjects\Control.sv
+Z16 FD:\School_Work\CSE141LProjects\Control.sv
+L0 14
+R6
+R7
+Z17 !s107 D:\School_Work\CSE141LProjects\Control.sv|
+Z18 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\Control.sv|
+!i113 1
+R10
+R11
+n@control
+XControl_sv_unit
+R0
+R13
+VI9hWfkIYf^=k>:;GZgKTo2
+r1
+!s85 0
+31
+!i10b 1
+!s100 fnFiCL8>a1M_AUOTLAeH^0
+II9hWfkIYf^=k>:;GZgKTo2
+!i103 1
+S1
+R2
+R14
+R15
+R16
+Z19 L0 13
+R6
+R7
+R17
+R18
+!i113 1
+R10
+R11
+n@control_sv_unit
+vControl_tb
+R0
+R13
+DXx4 work 18 Control_tb_sv_unit 0 22 FRJKSM^Pb4Wc=RJIjzOeW2
+R1
+r1
+!s85 0
+31
+!i10b 1
+!s100 S[3l5Wm8GEzVEW268>5;P0
+IGM]hifiJoQn0]^=P:MV@>3
+!s105 Control_tb_sv_unit
+S1
+R2
+Z20 w1496468378
+Z21 8D:\School_Work\CSE141LProjects\Control_tb.sv
+Z22 FD:\School_Work\CSE141LProjects\Control_tb.sv
+L0 24
+R6
+R7
+Z23 !s107 D:\School_Work\CSE141LProjects\Control_tb.sv|
+Z24 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\Control_tb.sv|
+!i113 1
+R10
+R11
+n@control_tb
+XControl_tb_sv_unit
+R0
+R13
+VFRJKSM^Pb4Wc=RJIjzOeW2
+r1
+!s85 0
+31
+!i10b 1
+!s100 e^nDJCA`2l[:c1a<Z=oV?1
+IFRJKSM^Pb4Wc=RJIjzOeW2
+!i103 1
+S1
+R2
+R20
+R21
+R22
+L0 22
+R6
+R7
+R23
+R24
+!i113 1
+R10
+R11
+n@control_tb_sv_unit
+vDataRAM
+R0
+R12
+!i10b 1
+!s100 QFLDYCJ9EKNS^UngMD:FY3
+If;9^FHUX[P[aHA]7ezlzl3
+R1
+!s105 DataRAM_sv_unit
+S1
+R2
+R3
+8D:\School_Work\CSE141LProjects\DataRAM.sv
+FD:\School_Work\CSE141LProjects\DataRAM.sv
+R19
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:\School_Work\CSE141LProjects\DataRAM.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\DataRAM.sv|
+!i113 1
+R10
+R11
+n@data@r@a@m
+Xdefinitions
+R0
+R12
+!i10b 1
+!s100 jGbU:`IM?d8=SUnM`_[nP2
+IEd6:?_B2j=ZB1bmJlzYz:2
+VEd6:?_B2j=ZB1bmJlzYz:2
+S1
+R2
+w1496467508
+8D:/School_Work/CSE141LProjects/definitions.sv
+FD:/School_Work/CSE141LProjects/definitions.sv
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:/School_Work/CSE141LProjects/definitions.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/definitions.sv|
+!i113 1
+R10
+R11
+vinstr_ROM
+R0
+R12
+!i10b 1
+!s100 0EZcHh6g06mXG^JiZ8U@z3
+IR8OkdZTNTNbo6QEdfQn__0
+R1
+!s105 instrROM_sv_unit
+S1
+R2
+R3
+8D:/School_Work/CSE141LProjects/instrROM.sv
+FD:/School_Work/CSE141LProjects/instrROM.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:/School_Work/CSE141LProjects/instrROM.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/instrROM.sv|
+!i113 1
+R10
+R11
+ninstr_@r@o@m
+vprogram_counter
+R0
+R12
+!i10b 1
+!s100 Ij9oja8IKVY6TMh>o]jWz2
+I8hB^z2<9gEaNUgV?58I782
+R1
+!s105 programcounter_sv_unit
+S1
+R2
+w1496469850
+8D:/School_Work/CSE141LProjects/programcounter.sv
+FD:/School_Work/CSE141LProjects/programcounter.sv
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:/School_Work/CSE141LProjects/programcounter.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/programcounter.sv|
+!i113 1
+R10
+R11
+vreg_file
+R0
+R12
+!i10b 1
+!s100 bcKOgQmn4adlKPOOJ8oaC2
+ISIIYMUgm0J56:H]LN3zIk3
+R1
+!s105 regfile_sv_unit
+S1
+R2
+R3
+8D:/School_Work/CSE141LProjects/regfile.sv
+FD:/School_Work/CSE141LProjects/regfile.sv
+R19
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:/School_Work/CSE141LProjects/regfile.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/School_Work/CSE141LProjects/regfile.sv|
+!i113 1
+R10
+R11
+vTopLevel
+R0
+R12
+!i10b 1
+!s100 LR5T1W4BOli<E9963]4j30
+IN>m9a0Sm]5i1j9D35Sdh_2
+R1
+!s105 TopLevel_sv_unit
+S1
+R2
+R3
+8D:\School_Work\CSE141LProjects\TopLevel.sv
+FD:\School_Work\CSE141LProjects\TopLevel.sv
+R19
+R6
+r1
+!s85 0
+31
+R7
+!s107 D:\School_Work\CSE141LProjects\TopLevel.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:\School_Work\CSE141LProjects\TopLevel.sv|
+!i113 1
+R10
+R11
+n@top@level

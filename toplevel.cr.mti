@@ -1,0 +1,76 @@
+D:/School_Work/CSE141LProjects/Control.sv {1 {vlog -work work -sv -stats=none {D:\School_Work\CSE141LProjects\Control.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package Control_sv_unit
+-- Importing package definitions
+-- Compiling module Control
+
+Top level modules:
+	Control
+
+} {} {}} D:/School_Work/CSE141LProjects/instrROM.sv {1 {vlog -work work -sv -stats=none D:/School_Work/CSE141LProjects/instrROM.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module instr_ROM
+
+Top level modules:
+	instr_ROM
+
+} {} {}} D:/School_Work/CSE141LProjects/regfile.sv {1 {vlog -work work -sv -stats=none D:/School_Work/CSE141LProjects/regfile.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module reg_file
+
+Top level modules:
+	reg_file
+
+} {} {}} D:/School_Work/CSE141LProjects/DataRAM.sv {1 {vlog -work work -sv -stats=none {D:\School_Work\CSE141LProjects\DataRAM.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module DataRAM
+
+Top level modules:
+	DataRAM
+
+} {} {}} D:/School_Work/CSE141LProjects/Control_tb.sv {1 {vlog -work work -sv -stats=none {D:\School_Work\CSE141LProjects\Control_tb.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package Control_tb_sv_unit
+-- Importing package definitions
+-- Compiling module Control_tb
+
+Top level modules:
+	Control_tb
+
+} {} {}} D:/School_Work/CSE141LProjects/ALUTestBench.sv {1 {vlog -work work -sv -stats=none {D:\School_Work\CSE141LProjects\ALUTestBench.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ALUTestBench
+
+Top level modules:
+	ALUTestBench
+
+} {} {}} D:/School_Work/CSE141LProjects/ALU.sv {1 {vlog -work work -sv -stats=none {D:\School_Work\CSE141LProjects\ALU.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package ALU_sv_unit
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} D:/School_Work/CSE141LProjects/TopLevel.sv {1 {vlog -work work -sv -stats=none {D:\School_Work\CSE141LProjects\TopLevel.sv}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module TopLevel
+
+Top level modules:
+	TopLevel
+
+} {} {}} D:/School_Work/CSE141LProjects/programcounter.sv {1 {vlog -work work -sv -stats=none D:/School_Work/CSE141LProjects/programcounter.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module program_counter
+
+Top level modules:
+	program_counter
+
+} {} {}} D:/School_Work/CSE141LProjects/definitions.sv {1 {vlog -work work -sv -stats=none D:/School_Work/CSE141LProjects/definitions.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling package definitions
+
+Top level modules:
+	--none--
+
+} {} {}}

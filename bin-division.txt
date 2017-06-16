@@ -1,0 +1,64 @@
+111001000    //mv    $r0, -8
+000100000    //sll   $r0, $r0
+001000000    //lw    $r0, [r0]
+011010000    //sreg  $r0, $r4
+111011000    //mv    $r1, -8
+000100101    //sll   $r1, $r1
+100010001    //addi  $r1, 1
+001000101    //lw    $r1, [r1]
+011010101    //sreg  $r1, $r5
+111101000    //mv    $r2, -8
+000101010    //sll   $r2, $r2
+100100010    //addi  $r2, 2
+001001010    //lw    $r2, [r2]
+011011010    //sreg  $r2, $r6
+111110111    //mv    $r3, 7
+000101111    //sll   $r3, $r3
+100101110    //addi  $r2, -2
+001001111    //lw    $r3, [r3]
+011011111    //sreg  $r3, $r7
+011101010    //lreg  $r2, $r6          #loads the divisor
+001111001    //slt   $r2, $r1          #sets r2 to 0/1 one if its less than r1 or not
+110000010    //bne   $r2, SHIFT        #jumps to shift on condition
+011101010    //lreg  $r2, $r6  #loads the divisor
+010000110    //subu  $r1, $r2         #subtracts the divisor from the LSW
+010110010    //sez   $r2               #set to zero
+100101111    //addi  $r2, -1           #next three loads 11111111 into the register
+000111010    //srl   $r2, $r2          #shifts 4 bits
+100101111    //addi  $r2, -1
+011001011    //seq   $r2, $r3          #checks if LSW quotient accumulator is full
+100110001    //addi  $r3, 1            #resets it to 0 if it is or incr if not
+101000011    //bez   $r3, INCRMSW      #jumps to increment the MSW
+101000000    //bez   $r0, LOOP        #reloops by comparing to 0(r15) automatically
+011101111    //lreg  $r3, $r7  #loads the current MSW
+100110001    //addi  $r3, 1            #incr by 1
+011011111    //sreg  $r3, $r7  #resaves the MSW
+010110011    //sez   $r3               #resets our LSW quotient accumulator
+101000011    //bez   $r3, LOOP        #resets loop
+101000000    //bez   $r0, DONE         #if MSW of dividend is already 0 then DONE
+010110010    //sez   $r2
+100100001    //addi  $r2, 1
+010101000    //and   $r2, $r0          #checks if MSW's LSb is 1
+101000010    //bez   $r2, SHIFT
+000110001    //srl   $r0, $r1          #shifts right by 1
+101000010    //bez   $r2, SHIFT        #if not continues shifting
+010110010    //sez   $r2
+100101111    //addi  $r2, -1
+000111010    //srl   $r2, $r2
+100101111    //addi  $r2, -1
+010010110    //addu  $r1, $r2          #adds 11111111 to the dividend LSW
+011101010    //lreg  $r2, $r2
+010000110    //subu  $r1, $r2          #subs our dividend
+100010001    //addi  $r1, 1            #adds the last 1 to our LSW
+100101111    //addi  $r2, -1
+000111010    //srl   $r2, $r2
+100101111    //addi  $r2, -1
+011001011    //seq   $r2, $r3          #checks for full quotient LSW
+100110001    //addi  $r3, 1
+101000010    //bez   $r2, INCRMSW
+101000000    //bez   $r0, LOOP         #loops on r15 automatically
+111110111    //mv    $r3, 7
+000101111    //sll   $r3, $r3
+100111111    //addi   $r3, -1
+001011111    //sw    $r3, [$r3]   #stores the LSW quotient to memory,
+001100000    //ht                      #our MSW is already stored
