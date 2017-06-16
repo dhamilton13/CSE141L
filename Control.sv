@@ -12,98 +12,310 @@
 //
 import definitions::*;
 module Control(
-    input        [4:0] OPCODE,
-    output logic [1:0] ALU_OP,
-    output logic [1:0] ALU_SRC_B,
+    input        [8:0] OPCODE,
+    output logic [4:0] ALU_OP,
+    output logic [1:0] ALU_SRC_A,
+    output logic [3:0] ALU_SRC_B,
+    output logic       R_Type,
     output logic       REG_WRITE,
     output logic       BRANCH,
     output logic       MEM_WRITE,
     output logic       MEM_READ,
-    output logic       REG_DST,
+    output logic [3:0] REG_DST,
     output logic       MEM_TO_REG,
-	output logic       HALT
+    output logic       HALT
     );
-	always_comb	begin
-		
-	  case(OPCODE)
-	  	0 :	begin
-			  REG_DST    = 1;
-			  BRANCH     = 0;
-			  ALU_SRC_B  = 2; 	 // 2 is 0 don't care
-			  ALU_OP     = ADD; 
-			  MEM_TO_REG = 0;	 // use mem read
-			  MEM_READ   = 1;
-			  MEM_WRITE  = 0;
-			  REG_WRITE  = 1;
-			  HALT       = 0;
-		 end
-		 1 : begin
-			  REG_DST    = 0;
-			  BRANCH     = 0;
-			  ALU_SRC_B  = 2'b1; // 1 is SE 3 bit immediate
-			  ALU_OP     = SUB; 
-			  MEM_TO_REG = 1;	 // use alu result
-			  MEM_READ   = 0;
-			  MEM_WRITE  = 0;
-			  REG_WRITE  = 1;
-			  HALT = 0;
-		 end
-		 2 : begin
-			  REG_DST    = 1; 	 // don't care
-			  BRANCH     = 0;
-			  ALU_SRC_B  = 2; 	 // 2 is 0, don't care
-			  ALU_OP     = SLL;
-			  MEM_TO_REG = 1;	 // use alu, don't care
-			  MEM_READ   = 0;
-			  MEM_WRITE  = 1;
-			  REG_WRITE  = 0;
-			  HALT       = 0;
-		  end
-		  3 : begin
-			  REG_DST    = 1;    // don't care
-			  BRANCH     = 1;
-			  ALU_SRC_B  = 2; 	 // 2 is zero
-			  ALU_OP     = SRL; 
-			  MEM_TO_REG = 1;	 // use alu, don't care
-			  MEM_READ   = 0;
-			  MEM_WRITE  = 0;
-			  REG_WRITE  = 0;
-			  HALT       = 0;
-		  end
-		  4 : begin
-			  REG_DST    = 1;    // don't care
-			  BRANCH     = 1;
-			  ALU_SRC_B  = 2; 	 // 2 is zero
-			  ALU_OP     = SLT; 
-			  MEM_TO_REG = 1;	 // use alu, don't care
-			  MEM_READ   = 0;
-			  MEM_WRITE  = 0;
-			  REG_WRITE  = 0;
-			  HALT       = 0;
-		  end
-		  15: begin
-			  REG_DST    = 0;    // don't care
-			  BRANCH     = 0;
-			  ALU_SRC_B  = 0; 	 // 2 is zero
-			  ALU_OP     = SUBU; 
-			  MEM_TO_REG = 1;	 // use alu, don't care
-			  MEM_READ   = 0;
-			  MEM_WRITE  = 0;
-			  REG_WRITE  = 0;
-			  HALT       = 1;
-		  end
-		  default: begin
-			  REG_DST    = 0;    // don't care
-			  BRANCH     = 0;
-			  ALU_SRC_B  = 0; 	 // 2 is zero
-			  ALU_OP     = ADDU; 
-			  MEM_TO_REG = 1;	 // use alu, don't care
-			  MEM_READ   = 0;
-			  MEM_WRITE  = 0;
-			  REG_WRITE  = 0;		  
-		     	  HALT = 1;
+
+	always_comb begin
+		case(OPCODE[8])
+			0 : begin //R type
+				case(OPCODE[7:4])
+					0: //add
+						begin 
+							ALU_OP     = ADD; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					1: //sub
+						begin 
+							ALU_OP     = SUB; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					2: //sll
+						begin 
+							ALU_OP     = SLL; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					3: //srl
+						begin 
+							ALU_OP     = SRL; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					4: //lw
+						begin 
+							ALU_OP     = LW; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 1;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 1;
+							HALT       = 0;
+						end
+					5: //sw
+						begin 
+							ALU_OP     = SW; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 0;
+							BRANCH     = 0;
+							MEM_WRITE  = 1;
+							MEM_READ   = 0;
+							REG_DST    = 0;
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					6: //ht
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = 0;
+							ALU_SRC_B  = 0;
+							R_Type     = 0;
+							REG_WRITE  = 0;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = 0;
+							MEM_TO_REG = 0;
+							HALT       = 1;
+						end
+					7: //slt skip for now
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = 0;
+							ALU_SRC_B  = 0;
+							R_Type     = 0;
+							REG_WRITE  = 0;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = 0;
+							MEM_TO_REG = 0;
+							HALT       = 1;
+						end
+					8: //subu skip for now
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = 0;
+							ALU_SRC_B  = 0;
+							R_Type     = 0;
+							REG_WRITE  = 0;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = 0;
+							MEM_TO_REG = 0;
+							HALT       = 1;
+						end
+					9: //addu skip for now
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = 0;
+							ALU_SRC_B  = 0;
+							R_Type     = 0;
+							REG_WRITE  = 0;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = 0;
+							MEM_TO_REG = 0;
+							HALT       = 1;
+						end
+					10: //and
+						begin 
+							ALU_OP     = AND; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					11: //sez
+						begin 
+							ALU_OP     = SEZ; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[1:0];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					12: //seq skip for now
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[1:0];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					13: //sreg
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = (OPCODE[1:0] + 3b'100); //add 4
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					14: //lreg
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = OPCODE[1:0];
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = (OPCODE[1:0] + 3b'100);//add 4
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					15: //lreg
+						begin 
+							ALU_OP     = 0; 
+							ALU_SRC_A  = OPCODE[3:2];
+							ALU_SRC_B  = (OPCODE[1:0] + 3b'100);
+							R_Type     = 1;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[3:2];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+				endcase
+			end
+			1: begin //I type
+				case(OPCODE[7:6])
+					0:
+						begin //addi
+							ALU_OP     = ADDI; 
+							ALU_SRC_A  = OPCODE[5:4];
+							ALU_SRC_B  = OPCODE[3:0];
+							R_Type     = 0;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[5:4];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					1:
+						begin //bez
+							ALU_OP     = BEZ; 
+							ALU_SRC_A  = OPCODE[1:0];
+							ALU_SRC_B  = 4b'1000;
+							R_Type     = 0;
+							REG_WRITE  = 0;
+							BRANCH     = 1;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = 0;
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					2:
+						begin //bne
+							ALU_OP     = BNE; 
+							ALU_SRC_A  = OPCODE[1:0];
+							ALU_SRC_B  = 4b'1000;
+							R_Type     = 0;
+							REG_WRITE  = 0;
+							BRANCH     = 1;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = 0;
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+					3:
+						begin //mv
+							ALU_OP     = MV; 
+							ALU_SRC_A  = OPCODE[5:4];
+							ALU_SRC_B  = OPCODE[3:0];
+							R_Type     = 0;
+							REG_WRITE  = 1;
+							BRANCH     = 0;
+							MEM_WRITE  = 0;
+							MEM_READ   = 0;
+							REG_DST    = OPCODE[5:4];
+							MEM_TO_REG = 0;
+							HALT       = 0;
+						end
+				endcase
 			end
 		endcase
 	end
-
 endmodule

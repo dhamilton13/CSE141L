@@ -25,12 +25,12 @@ module reg_file #(parameter W=8, D=4)(
 logic [W-1:0] registers[2**D];
 
 // combinational reads
-assign      ReadA = (srcA == 'b0)? 'b0 : registers[srcA];
-always_comb ReadB = (srcB == 'b0)? 'b0 : registers[srcB];
+assign      ReadA = (srcA == 'b1111)? 'b0 : registers[srcA];
+always_comb ReadB = (srcB == 'b1111)? 'b0 : registers[srcB];
 
 // sequential (clocked) writes
 always_ff @ (posedge CLK)
-  if (RegWrite && (writeReg != 'b0))
+  if (RegWrite && (writeReg != '1110))
     registers[writeReg] <= writeValue;
 
 endmodule
