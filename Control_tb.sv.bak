@@ -24,27 +24,30 @@ import definitions::*;
 module Control_tb;
 
 // Inputs
-  bit [3:0] OPCODE;
+  bit [8:0] OPCODE;
 
 // Outputs
-  wire [1:0] ALU_OP;
-  wire [1:0] ALU_SRC_B;
+  wire [4:0] ALU_OP;
+  wire [1:0] ALU_SRC_A;
+  wire [3:0] ALU_SRC_B;
+  wire R_Type;
   wire REG_WRITE;
   wire BRANCH;
   wire MEM_WRITE;
   wire MEM_READ;
-  wire REG_DST;
+  wire [3:0] REG_DST;
   wire MEM_TO_REG;
   wire HALT;
-  op_mne op_mnemonic;
 
 	// Instantiate the Unit Under Test (UUT)
 	Control uut (
 		.OPCODE    , 
 		.ALU_OP    , 
+ 		.ALU_SRC_A ,
 		.ALU_SRC_B , 
+		.R_Type    , 
 		.REG_WRITE , 
-		.BRANCH    , 
+ 		.BRANCH    ,
 		.MEM_WRITE , 
 		.MEM_READ  , 
 		.REG_DST   , 
@@ -55,13 +58,29 @@ module Control_tb;
 	initial begin
 // Wait 20 ns for global reset to finish
 		#20ns;
-// Add stimulus here
-        OPCODE = 2;
-		#20ns OPCODE = 1;
-		#20ns OPCODE = 3;
-		#20ns;
+		// Add stimulus here
+		#10ns OPCODE = 9b'000000000;//add
+		#10ns OPCODE = 9b'000010000;//sub
+		#10ns OPCODE = 9b'000100000;//sll
+		#10ns OPCODE = 9b'000110000;//srl
+		#10ns OPCODE = 9b'001000000;//lw
+		#10ns OPCODE = 9b'001010000;//sw
+		#10ns OPCODE = 9b'001100000;//hlt
+		#10ns OPCODE = 9b'001110000;//breg
+		#10ns OPCODE = 9b'010000000;//subu
+		#10ns OPCODE = 9b'010010000;//addu
+		#10ns OPCODE = 9b'010100000;//and
+		#10ns OPCODE = 9b'010110000;//slra
+		#10ns OPCODE = 9b'011000000;//seq
+		#10ns OPCODE = 9b'011010000;//sreg
+		#10ns OPCODE = 9b'011100000;//lreg
+		#10ns OPCODE = 9b'011110000;//mod
+		#10ns OPCODE = 9b'100110000;//addi
+		#10ns OPCODE = 9b'101110000;//bne
+		#10ns OPCODE = 9b'110110000;//bez
+		#10ns OPCODE = 9b'111110000;//mv
+		#10ns;
 	end
-    assign op_mnemonic = op_mne(ALU_OP);
       
 endmodule
 
